@@ -22,6 +22,7 @@ purpose is for those languages.
 
 Here's the complete list (dir tree) of this config.
 ~\nvim
+```
  ├── init.lua
  ├── lazy-lock.json
  ├── lua
@@ -63,3 +64,4 @@ Here's the complete list (dir tree) of this config.
  │       ├── whichpy.lua
  │       └── zenmode.lua
  ├── README.md
+```
