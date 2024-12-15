@@ -21,8 +21,8 @@ JavaScript and Shell scripting for itty bitty tiny automation. The plugins main
 purpose is for those languages.
 
 Here's the complete list (dir tree) of this config.
-~\nvim
 ```
+~\nvim
  ├── init.lua
  ├── lazy-lock.json
  ├── lua
