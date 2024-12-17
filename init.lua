@@ -42,6 +42,7 @@ require('lazy').setup({
   { import = "plugins.obsidian" },
   { import = "plugins.whichkey" },
   { import = "plugins.telescope"  },
+  { import = "plugins.luasnip" },
   { import = "plugins.autocompletion" },
   { import = "plugins.mini"  },
   { import = "plugins.persistence" },
@@ -103,6 +104,7 @@ vim.keymap.set("n", "<S-A-h>", "50<C-w><")
 vim.keymap.set("n", "<S-A-l>", "50<C-w>>")
 vim.keymap.set("n", "<S-A-j>", "50<C-w>-")
 vim.keymap.set("n", "<S-A-k>", "50<C-w>+")
+vim.keymap.set('n', '<Leader>ii', ':lua vim.cmd("DiagnosticsToggleVirtualText")<CR>')
 
 -- local python_path = 'D:\\APLIKASI\\pythons\\python.exe'
 -- vim.keymap.set('n', '<leader>py',  ':WhichPy select ' .. python_path )
