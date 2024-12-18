@@ -48,7 +48,7 @@ require('lazy').setup({
   { import = "plugins.persistence" },
   { import = "plugins.todo-folke" },
   -- { import = "plugins.autosession" },
-  { import = "plugins.Harpoon2" },
+  { import = "plugins.harpoon2" },
   { import = "plugins.tree-sitter-context" },
   { import = "plugins.markdown-preview" },
   { import = 'legacy.lint' },
