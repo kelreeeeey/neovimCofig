@@ -1,0 +1,3 @@
+[submodule "clink/local_directory"]
+	path = clink/local_directory
+	url = https://github.com/chrisant996/clink-gizmos
