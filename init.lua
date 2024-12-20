@@ -25,6 +25,7 @@ require('lazy').setup({
   { import = "plugins.lspconfig" },
   { import = "plugins.snake-nvim" },
   'marko-cerovac/material.nvim',
+  { import = "plugins.colorscheme-oxcarbon" },
   'alvan/vim-closetag',
   'Xuyuanp/nerdtree-git-plugin',
   'tiagofumo/vim-nerdtree-syntax-highlight',
@@ -78,7 +79,12 @@ require('lazy').setup({
   },
 })
 
-vim.cmd.colorscheme "material-deep-ocean"
+-- vim.opt.background "dark" -- set this to dark or light
+vim.cmd.colorscheme "oxocarbon"
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+-- vim.cmd.colorscheme "material-deep-ocean"
 vim.keymap.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
 vim.keymap.set('n', '<leader>tp', ':wa!<CR>:! python %<CR>')
 -- vim.keymap.set('n', '<leader>tc', ':wa!<CR>:!gcc %<CR>')
