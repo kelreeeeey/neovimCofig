@@ -81,15 +81,23 @@ require('lazy').setup({
 
 -- vim.cmd.colorscheme "oxocarbon"
 -- vim.cmd.colorscheme "material-deep-ocean"
-vim.cmd.colorscheme "onedark_dark"
+vim.cmd.colorscheme "bluloco-dark"
 
 function toglle_colorscheme()
   theme = vim.g.colors_name
-  print(theme)
   if theme == "onedark_dark" then
     vim.cmd.colorscheme("onelight")
   elseif theme == "onelight" then
     vim.cmd.colorscheme("onedark_dark")
+  elseif theme == "bluloco" then
+    style = require('bluloco').config.style
+    if style == "dark" then
+      vim.cmd.colorscheme("bluloco-light")
+    elseif style == "light" then
+      vim.cmd.colorscheme("bluloco-dark")
+    else
+      vim.cmd.colorscheme("bluloco-dark")
+    end
   else
     vim.cmd.colorscheme("onedark_dark")
   end
