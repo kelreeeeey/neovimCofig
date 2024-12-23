@@ -34,7 +34,7 @@ require('lazy').setup({
   { import = "plugins.transparent" },
   { import = "plugins.noice" },
   { import = "plugins.lualine" },
-  { import = "plugins.vimtex" },
+  -- { import = "plugins.vimtex" },
   { import = "plugins.whichpy" },
   { import = "plugins.oil" },
   { import = "plugins.treesitter" },

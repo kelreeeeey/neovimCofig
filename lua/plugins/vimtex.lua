@@ -6,6 +6,6 @@ return
   init = function()
     -- VimTeX configuration goes here, e.g.
     vim.g.vimtex_view_method = "SumatraPDF"
-    vim.g.vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+    vim.g.vimtex_view_general_options = '-reuse-instance @pdf'
   end
 }
