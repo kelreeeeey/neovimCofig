@@ -1,1 +1,1 @@
-load(io.popen('oh-my-posh init cmd --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/pixelrobots.omp.json'):read("*a"))()
+load(io.popen('oh-my-posh init cmd --config C:/Users/Lenovo/AppData/Local/nvim/clink/tokyo.omp.json'):read("*a"))()

@@ -46,53 +46,48 @@ return {
 
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          if vim.bo.filetype == "js" then
-            vim.opt_local.tabstop = 4 -- Number of spaces a tab represents
-            vim.opt_local.shiftwidth = 4 -- Number of spaces for each indentation
+          local set_opt_local = function(tabstop, theme)
+            vim.opt_local.tabstop = tabstop -- Number of spaces a tab represents
+            vim.opt_local.shiftwidth = tabstop -- Number of spaces for each indentation
             vim.opt_local.expandtab = true -- Convert tabs to spaces
             vim.opt_local.smartindent = true -- Automatically indent new lines
+          end
+
+          if vim.bo.filetype == "js" then
+            set_opt_local(2, "onedark_dark")
           end
 
           if vim.bo.filetype == "html" then
-            vim.opt_local.tabstop = 2 -- Number of spaces a tab represents
-            vim.opt_local.shiftwidth = 2 -- Number of spaces for each indentation
-            vim.opt_local.expandtab = true -- Convert tabs to spaces
-            vim.opt_local.smartindent = true -- Automatically indent new lines
+            set_opt_local(2, "onedark_dark")
           end
 
           if vim.bo.filetype == "json" then
-            vim.opt_local.tabstop = 4 -- Number of spaces a tab represents
-            vim.opt_local.shiftwidth = 4 -- Number of spaces for each indentation
-            vim.opt_local.expandtab = true -- Convert tabs to spaces
-            vim.opt_local.smartindent = true -- Automatically indent new lines
+            set_opt_local(2, "onedark_dark")
           end
 
-          if vim.bo.filetype == "python" then
-            vim.opt_local.tabstop = 4 -- Number of spaces a tab represents
-            vim.opt_local.shiftwidth = 4 -- Number of spaces for each indentation
-            vim.opt_local.expandtab = true -- Convert tabs to spaces
-            vim.opt_local.smartindent = true -- Automatically indent new lines
+          if ( vim.bo.filetype == "latex" ) or ( vim.bo.filetype == "tex" ) or ( vim.bo.filetype == "bib" ) then
+            set_opt_local(4, "onelight")
+          end
+
+          if ( vim.bo.filetype == "markdown" ) or ( vim.bo.filetype == "md" ) then
+            set_opt_local(4, "onedark_dark")
+          end
+
+
+          if ( vim.bo.filetype == "python" ) or ( vim.bo.filetype == "py" ) then
+            set_opt_local(4, "onedark_dark")
           end
 
           if vim.bo.filetype == "lua" then
-            vim.opt_local.tabstop = 2 -- Number of spaces a tab represents
-            vim.opt_local.shiftwidth = 2 -- Number of spaces for each indentation
-            vim.opt_local.expandtab = true -- Convert tabs to spaces
-            vim.opt_local.smartindent = true -- Automatically indent new lines
+            set_opt_local(2, "onedark_dark")
           end
 
           if vim.bo.filetype == "c" then
-            vim.opt_local.tabstop = 4 -- Number of spaces a tab represents
-            vim.opt_local.shiftwidth = 4 -- Number of spaces for each indentation
-            vim.opt_local.expandtab = true -- Convert tabs to spaces
-            vim.opt_local.smartindent = true -- Automatically indent new lines
+            set_opt_local(4, "onedark_dark")
           end
 
           if vim.bo.filetype == "sh" then
-            vim.opt_local.tabstop = 4
-            vim.opt_local.shiftwidth = 4
-            vim.opt_local.expandtab = true
-            vim.opt_local.smartindent = true
+            set_opt_local(4, "onedark_dark")
           end
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -162,6 +157,8 @@ return {
         'ruff',
         'clangd',
         'zls',
+        'black',
+        'elixir-ls',
         'awk-language-server',
         'html-lsp',
       })

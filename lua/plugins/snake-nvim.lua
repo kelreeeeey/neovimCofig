@@ -37,15 +37,13 @@ return {
                                                                       
                                                                       
                                                                       
-  ███                                           
+                                                                      
        ██████████    █████████                                        
         ██     ███  ███     ███                                       
         ██      ██  ██       ███                                      
         ██      ██  ██       ███                                      
         ██     ███  ███     ███                                       
        ██████████    █████████                                        
-                                                                      
-                                                                      
                                                                       
                                                                       
        ██████████ ████████   ███   ███████                            
@@ -57,14 +55,14 @@ return {
        ▒█████████ ███        ███    ██████                            
                                                                       
                                                                       
-                                                                      
           ████    ▒ ▓     ▒░  ▓░                                      
         ████████  ███     ██░ ██ ███████████                          
        ███    ███ █▒█     ██  ██     █▒█                              
         ███████   █▒████████  ██     █▒█                              
             █████ █▒█     ██  ██     █▒█                              
        ███    ███ █▒█     ██  ██     █▒█                              
-        ████████░ ███    ▒███ ███    ███  ███      ]]
+        ████████░ ███    ▒███ ███    ███  ███                         
+                                                                      ]]
       },
       sections = {
         { pane=1, section = "header" },
@@ -74,18 +72,23 @@ return {
           section = "terminal",
           cmd = "lsd",
           padding = 1,
-          limit = 15,
+          limit = 10,
           indent = 3,
         },
-        { pane=2, title = "MRU", padding = 1 },
+
+        { pane=2, title = "Recent Global Buffers", padding = 1 },
         { pane=2, section = "recent_files", limit = 5, padding = 1, indent=3 },
-        { pane=2, title = "MRU ", file = vim.fn.fnamemodify(".", ":~"), padding = 1 },
+
+        { pane=2, title = "Recent Local Buffers", file = vim.fn.fnamemodify("..", ":~"), padding = 1 },
         { pane=2, section = "recent_files", cwd = true, limit = 8, padding = 1, indent=3 },
-        { pane=2, title = "Sessions", padding = 1 },
-        { pane=2, section = "projects", padding = 1, indent=3},
+
+        -- { pane=2, title = "Sessions", padding = 1, indent=1 },
+        -- { pane=2, section = "projects", cwd = true, limit = 8, padding = 1, indent=3},
+        --
         -- { pane=2, title = "Bookmarks", padding = 1 },
         -- { pane=2, section = "keys" },
-        { pane=2, footer = {}}
+
+        -- { pane=2, footer = {}}
       },
     },
     indent = { enabled = true },

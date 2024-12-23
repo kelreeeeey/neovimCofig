@@ -21,20 +21,20 @@ vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+
 require('lazy').setup({
   { import = "plugins.lspconfig" },
   { import = "plugins.snake-nvim" },
-  'marko-cerovac/material.nvim',
-  { import = "plugins.colorscheme-oxcarbon" },
+  { import = "plugins.colorschemes" },
   'alvan/vim-closetag',
   'Xuyuanp/nerdtree-git-plugin',
   'tiagofumo/vim-nerdtree-syntax-highlight',
   'folke/twilight.nvim',
-  'xiyaowong/nvim-transparent',
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { import = "plugins.transparent" },
   { import = "plugins.noice" },
   { import = "plugins.lualine" },
-  -- { import = "plugins.snack-dashboard" },
+  { import = "plugins.vimtex" },
   { import = "plugins.whichpy" },
   { import = "plugins.oil" },
   { import = "plugins.treesitter" },
@@ -79,24 +79,27 @@ require('lazy').setup({
   },
 })
 
--- vim.opt.background "dark" -- set this to dark or light
-vim.cmd.colorscheme "oxocarbon"
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+-- vim.cmd.colorscheme "oxocarbon"
 -- vim.cmd.colorscheme "material-deep-ocean"
+vim.cmd.colorscheme "onedark_dark"
+
+function toglle_colorscheme()
+  theme = vim.g.colors_name
+  print(theme)
+  if theme == "onedark_dark" then
+    vim.cmd.colorscheme("onelight")
+  elseif theme == "onelight" then
+    vim.cmd.colorscheme("onedark_dark")
+  else
+    vim.cmd.colorscheme("onedark_dark")
+  end
+end
+
+vim.keymap.set('n', "<A-C>", "<CMD>lua toglle_colorscheme()<CR>")
+vim.keymap.set('n', "<A-T>", "<CMD>TransparentToggle<CR>")
 vim.keymap.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
-vim.keymap.set('n', '<leader>tp', ':wa!<CR>:! python %<CR>')
--- vim.keymap.set('n', '<leader>tc', ':wa!<CR>:!gcc %<CR>')
--- vim.keymap.set('n', ':Wa1', ':wa!')
--- vim.keymap.set('n', ':Wa!', ':wa!')
--- vim.keymap.set('n', ':WA1', ':wa!')
--- vim.keymap.set('n', ':WA!', ':wa!')
--- vim.keymap.set('n', '<leader>ttp', ':wa!<CR>:split :terminal python %<CR>')
 
 -- insert mode deletion
-vim.keymap.set('n', '<C-Bs>', 'db')
-vim.keymap.set('n', '<C-Del>', 'de')
 vim.keymap.set("n", "\\", "<CMD>Oil --float<CR>", { desc = "Open parent directory in floating window" })
 vim.keymap.set("n", "< C-\\ >", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
