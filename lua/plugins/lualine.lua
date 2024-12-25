@@ -4,7 +4,7 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = "material",
+        theme = "oxocarbon",
       },
       sections = {
         lualine_a = { "mode" },
