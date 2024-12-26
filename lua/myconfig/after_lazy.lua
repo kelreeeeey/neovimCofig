@@ -5,12 +5,12 @@ twilight = require("twilight")
 -- vim.cmd.colorscheme "onedark_dark"
 
 local default_theme = function(style)
-  if style == "industry" then
-    vim.cmd.colorscheme("wildcharm")
-  elseif style == "wildcharm" then
-    vim.cmd.colorscheme("industry")
+  if style == "github" then
+    vim.cmd.colorscheme("ayu")
+  elseif style == "ayu" then
+    vim.cmd.colorscheme("github")
   else
-    vim.cmd.colorscheme("industry")
+    vim.cmd.colorscheme("ayu")
   end
 end
 
@@ -47,11 +47,10 @@ local material_theme = function(style)
   end
 end
 
-local onedark_theme = function(style)
-  if theme == "onedark_dark" then
+local enfocado_theme = function(style)
+  theme = vim.g.background
+  if theme == "" then
     vim.cmd.colorscheme("onelight")
-
-    vim.cmd.colorscheme("onedark_dark")
   else
     vim.cmd.colorscheme("onedark_dark")
   end
@@ -60,17 +59,17 @@ end
 function toglle_colorscheme()
   theme = vim.g.colors_name
   if theme == "onedark_dark" then
-    onedark_theme(theme)
+    enfocado_theme(theme)
   elseif theme == "bluloco" then
     bluloco_theme(theme)
   elseif theme == "material" then
     material_theme(theme)
   elseif theme == "tokyonight-night" or theme == "tokyonight-day" then
     tokyo_theme(theme)
-  elseif theme == "industry" or "wildcharm" then
+  elseif theme == "evening" or "wildcharm" then
     default_theme(theme)
   else
-    vim.cmd.colorscheme("industry")
+    vim.cmd.colorscheme("evening")
   end
 end
 
