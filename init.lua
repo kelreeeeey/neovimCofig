@@ -1,19 +1,20 @@
 require("myconfig.before_lazy")
 require("myconfig.the_lazy")
 require("legacy.autocommands")
+vim.cmd.colorscheme "wildcharm"
 require('lazy').setup({
   { import = "plugins.lspconfig" },
   { import = "plugins.snake-nvim" },
-  { import = "plugins.colorschemes" },
+  -- { import = "plugins.colorschemes" },
   'alvan/vim-closetag',
   -- 'Xuyuanp/nerdtree-git-plugin',
   -- 'tiagofumo/vim-nerdtree-syntax-highlight',
-  'folke/twilight.nvim',
+
   { import = "plugins.transparent" },
   { import = "plugins.noice" },
   { import = "plugins.lualine" },
-  { import = "plugins.true-zen" },
-  -- { import = "plugins.vimtex" },
+  { import = "plugins.zen-and-twilight" },
+  { import = "plugins.vimtex" },
   { import = "plugins.whichpy" },
   { import = "plugins.oil" },
   { import = "plugins.treesitter" },

@@ -9,7 +9,8 @@ return {
     bigfile = { enabled = true },
     dashboard = {
       pane_gap = 4,
-      -- width = 150,
+      width = 150,
+      height = 350,
       autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
       formats = {
         footer = { "%s", align = "center" },
@@ -31,64 +32,34 @@ return {
       },
       preset = {
         header = [[
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-                                                                      
-       ██████████    █████████                                        
-        ██     ███  ███     ███                                       
-        ██      ██  ██       ███                                      
-        ██      ██  ██       ███                                      
-        ██     ███  ███     ███                                       
-       ██████████    █████████                                        
-                                                                      
-                                                                      
-       ██████████ ████████   ███   ███████                            
-        ██        █▒█   ░███ █▓█  ███   ████                          
-        ██        █▒█    ███ █▓█ ███                                  
-        ████████  █▒███████  █▓█ █▒█                                  
-        ██        █▒█        █▓█ ███     ███                          
-        █████████ █▒█        █▓█  ████  ███▓                          
-       ▒█████████ ███        ███    ██████                            
-                                                                      
-                                                                      
-          ████    ▒ ▓     ▒░  ▓░                                      
-        ████████  ███     ██░ ██ ███████████                          
-       ███    ███ █▒█     ██  ██     █▒█                              
-        ███████   █▒████████  ██     █▒█                              
-            █████ █▒█     ██  ██     █▒█                              
-       ███    ███ █▒█     ██  ██     █▒█                              
-        ████████░ ███    ▒███ ███    ███  ███                         
-                                                                      ]]
+                                                                                                                     
+       ██████████    █████████      ██████████ ████████   ███   ███████          ████    ▒ ▓     ▒░  ▓░ ███████████  
+        ██     ███  ███     ███      ██        █▒█   ░███ █▓█  ███   ████      ████ ███  ███     ██░ ██     ███      
+        ██      ██  ██       ██      ██        █▒█    ███ █▓█ ███             ███     ██ █▒█     ██  ██     █▒█      
+        ██      ██  ██       ██      ████████  █▒███████  █▓█ █▒█              ██████    █▒████████  ██     █▒█      
+        ██      ██  ██       ██      ██        █▒█        █▓█ ███     ███          ████  █▒█     ██  ██     █▒█      
+        ██     ███  ███     ███      ██        █▒█        █▓█  ████  ███▓     ███    ███ █▒█     ██  ██     █▒█      
+       ██████████    █████████      ▒█████████ ███        ███    ██████        ████████░ ███    ▒███ ███    ███  ███ 
+                                                                                                                     ]]
       },
       sections = {
-        { pane=1, section = "header" },
-        { pane=2, title = "Current DIR", padding = 1 },
+        { pane=1, section = "header", indent = 2, align = "center"},
+        { pane=2, title = "Recent Global Buffers", padding = 1 },
+        { pane=2, section = "recent_files", limit = 4, padding = 1, indent=3 },
+
+        { pane=2, title = "Recent Local Buffers", file = vim.fn.fnamemodify("..", ":~"), padding = 1 },
+        { pane=2, section = "recent_files", cwd = true, limit = 4, padding = 1, indent=3 },
+        { pane=2, title = "~\\obsidian_vaults\\vim_notes", padding = 1, },
         {
           pane=2,
           section = "terminal",
-          cmd = "lsd",
-          padding = 1,
-          limit = 10,
+          cmd = "exa -lSR C:\\Users\\Lenovo\\obsidian_vault\\vim_notes ",
+          padding = 0,
+          limit = 100,
           indent = 3,
-        },
+          align = "center"
+        }
 
-        { pane=2, title = "Recent Global Buffers", padding = 1 },
-        { pane=2, section = "recent_files", limit = 5, padding = 1, indent=3 },
-
-        { pane=2, title = "Recent Local Buffers", file = vim.fn.fnamemodify("..", ":~"), padding = 1 },
-        { pane=2, section = "recent_files", cwd = true, limit = 8, padding = 1, indent=3 },
-
-        -- { pane=2, title = "Sessions", padding = 1, indent=1 },
-        -- { pane=2, section = "projects", cwd = true, limit = 8, padding = 1, indent=3},
-        --
-        -- { pane=2, title = "Bookmarks", padding = 1 },
-        -- { pane=2, section = "keys" },
-
-        -- { pane=2, footer = {}}
       },
     },
     indent = { enabled = true },
