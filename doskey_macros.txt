@@ -1,0 +1,4 @@
+nv="nvim"
+cdnv="cd C:\Users\Lenovo\AppData\Local\nvim"
+cdpp="cd D:\KELREY\personal_projects"
+cdut="cd D:\KELREY\undergradprojects"
