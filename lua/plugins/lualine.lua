@@ -5,6 +5,9 @@ return {
   priority = 1000,
   config = function()
     require("lualine").setup({
+      options = {
+        theme = 'ayu',
+      },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "diff", "diagnostics" },

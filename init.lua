@@ -7,6 +7,7 @@ require('lazy').setup({
   { import = "plugins.lualine" },
   { import = "plugins.colorschemes" },
   'alvan/vim-closetag',
+  "kiyoon/magick.nvim",
   -- 'Xuyuanp/nerdtree-git-plugin',
   -- 'tiagofumo/vim-nerdtree-syntax-highlight',
 
@@ -56,5 +57,4 @@ require('lazy').setup({
     },
   },
 })
-vim.cmd.colorscheme "ayu"
 require("myconfig.after_lazy")

@@ -47,7 +47,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.spelllang = { 'en,idn' }
 
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 vim.cmd ' let g:netrw_liststyle = 4 '
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')

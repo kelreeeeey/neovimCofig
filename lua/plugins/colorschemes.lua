@@ -1,12 +1,11 @@
 return {
-    'rafi/awesome-vim-colorschemes',
-    lazy = false,
-    priority = 1000,
+    -- 'rafi/awesome-vim-colorschemes',
+    -- lazy = false,
+    -- priority = 1000,
+  'Shatur/neovim-ayu',
+  mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+  terminal = true, -- Set to `false` to let terminal manage its own colors.
+  overrides = function()
+    return { Comment = { fg = colors.comment } }
+  end
 }
-
-  -- { "folke/tokyonight.nvim", lazy = true,  opts = {}, },
-  -- { 'marko-cerovac/material.nvim', lazy = true,  high_visibility = { lighter = false, darker = false }, },
-  -- { "nyoom-engineering/oxocarbon.nvim", lazy = true,  },
-  -- { "olimorris/onedarkpro.nvim", lazy = true,  },
-  -- { "uloco/bluloco.nvim", lazy = true,  dependencies = { 'rktjmp/lush.nvim' }, },
--- }
