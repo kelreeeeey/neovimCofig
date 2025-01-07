@@ -32,6 +32,7 @@ require('lazy').setup({
   { import = "plugins.harpoon2" },
   { import = "plugins.tree-sitter-context" },
   { import = "plugins.markdown-preview" },
+  { import = "plugins.smartcolumn" },
   { import = 'legacy.lint' },
   { import = 'legacy.autopairs' },
   { import = 'legacy.indent_line' },
