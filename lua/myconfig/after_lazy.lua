@@ -18,6 +18,7 @@ end
 vim.keymap.set('n', "<A-C>", "<CMD>lua toglle_colorscheme()<CR>")
 vim.keymap.set('n', "<A-T>", "<CMD>TransparentToggle<CR>")
 vim.keymap.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
+vim.keymap.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
 
 -- insert mode deletion
 vim.keymap.set("n", "\\", "<CMD>Oil --float<CR>", { desc = "Open parent directory in floating window" })
