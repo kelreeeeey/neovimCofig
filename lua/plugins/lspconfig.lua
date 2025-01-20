@@ -65,6 +65,12 @@ return {
             set_opt_local(2, "onedark_dark")
           end
 
+          if ( vim.bo.filetype == "yaml" ) then
+            set_opt_local(4, "onelight")
+            vim.opt_local.foldmethod = 'indent'
+          end
+
+
           if ( vim.bo.filetype == "latex" ) or ( vim.bo.filetype == "tex" ) or ( vim.bo.filetype == "bib" ) then
             set_opt_local(4, "onelight")
             vim.opt_local.foldmethod = 'indent'
@@ -128,14 +134,8 @@ return {
 
       local servers = {
         clangd = {},
-        pyright = {
-          -- settings = {
-          --   ltex = {
-          --     language = 'eng',
-          --   },
-          -- },
-        },
         rust_analyzer = {},
+        pyright = {},
         texlab = {},
         awk_ls = {},
         lua_ls = {

@@ -18,7 +18,7 @@ require('lazy').setup({
   { import = "plugins.whichpy" },
   { import = "plugins.oil" },
   { import = "plugins.treesitter" },
-  { import = "plugins.null-ls" },
+  -- { import = "plugins.null-ls" },
   { import = "plugins.render-markdown" },
   { import = "plugins.obsidian" },
   { import = "plugins.whichkey" },
