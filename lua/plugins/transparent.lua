@@ -1,5 +1,12 @@
 return {
   'tribela/transparent.nvim',
   event = 'VimEnter',
-  config = true,
+  config = function()
+    require("transparent").setup({
+      auto = true,
+      exclude = {
+        "LineNr"
+      }
+    })
+  end
 }

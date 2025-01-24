@@ -1,11 +1,31 @@
+local function exists(file)
+   local ok, err, code = os.rename(file, file)
+   if not ok then
+      if code == 13 then
+         -- Permission denied, but it exists
+         return true
+      end
+   end
+   return ok, err
+end
+
+local function isdir(path)
+   return exists(path.."/")
+end
+
+local function obsidian_workspace()
+  if isdir("C:\\Users\\Lenovo\\obsidian_vault") then
+    return "ls -lSR C:\\Users\\Lenovo\\obsidian_vault"
+  else
+    return "ls -lSR ~/Kelreys/obsidian_vaults"
+  end
+end
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
     opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
     bigfile = { enabled = true },
     dashboard = {
       pane_gap = 4,
@@ -53,7 +73,7 @@ return {
         {
           pane=2,
           section = "terminal",
-          cmd = "exa -lSR C:\\Users\\Lenovo\\obsidian_vault\\vim_notes ",
+          cmd = obsidian_workspace(),
           padding = 0,
           limit = 100,
           indent = 3,

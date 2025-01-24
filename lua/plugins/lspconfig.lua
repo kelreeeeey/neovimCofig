@@ -46,55 +46,54 @@ return {
 
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          local set_opt_local = function(tabstop, theme)
+          local set_opt_local = function(tabstop, theme, foldmethod)
             vim.opt_local.tabstop = tabstop -- Number of spaces a tab represents
             vim.opt_local.shiftwidth = tabstop -- Number of spaces for each indentation
             vim.opt_local.expandtab = true -- Convert tabs to spaces
             vim.opt_local.smartindent = true -- Automatically indent new lines
+            vim.opt_local.foldmethod = foldmethod
           end
 
           if vim.bo.filetype == "js" then
-            set_opt_local(2, "onedark_dark")
+            set_opt_local(2, "onedark_dark", "syntax")
           end
 
           if vim.bo.filetype == "html" then
-            set_opt_local(2, "onedark_dark")
+            set_opt_local(2, "onedark_dark", "syntax")
           end
 
           if vim.bo.filetype == "json" then
-            set_opt_local(2, "onedark_dark")
+            set_opt_local(2, "onedark_dark", "syntax")
           end
 
           if ( vim.bo.filetype == "yaml" ) then
-            set_opt_local(4, "onelight")
-            vim.opt_local.foldmethod = 'indent'
+            set_opt_local(4, "onelight", "syntax")
           end
 
 
           if ( vim.bo.filetype == "latex" ) or ( vim.bo.filetype == "tex" ) or ( vim.bo.filetype == "bib" ) then
-            set_opt_local(4, "onelight")
-            vim.opt_local.foldmethod = 'indent'
+            set_opt_local(4, "onelight", "syntax")
           end
 
           if ( vim.bo.filetype == "markdown" ) or ( vim.bo.filetype == "md" ) then
-            set_opt_local(4, "onedark_dark")
+            set_opt_local(4, "onedark_dark", "syntax")
           end
 
 
           if ( vim.bo.filetype == "python" ) or ( vim.bo.filetype == "py" ) then
-            set_opt_local(4, "onedark_dark")
+            set_opt_local(4, "onedark_dark", "syntax")
           end
 
           if vim.bo.filetype == "lua" then
-            set_opt_local(2, "onedark_dark")
+            set_opt_local(2, "onedark_dark", "syntax")
           end
 
           if vim.bo.filetype == "c" then
-            set_opt_local(4, "onedark_dark")
+            set_opt_local(4, "onedark_dark", "syntax")
           end
 
           if vim.bo.filetype == "sh" then
-            set_opt_local(4, "onedark_dark")
+            set_opt_local(4, "onedark_dark", "syntax")
           end
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
