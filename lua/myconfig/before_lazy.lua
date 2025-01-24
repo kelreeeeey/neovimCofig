@@ -6,16 +6,20 @@ vim.opt.foldtext = ''
 vim.opt.foldnestmax = 4
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.mouse = 'a'
+vim.opt.mouse = 'nv' -- Mouse only in normal and viusual mode
 vim.opt.showmode = false
+
 vim.o.tabstop = 2 -- Number of spaces a tab represents
 vim.o.shiftwidth = 2 -- Number of spaces for each indentation
 vim.o.expandtab = true -- Convert tabs to spaces
 vim.o.smartindent = true -- Automatically indent new lines
-vim.opt.foldmethod = 'expr'
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
+vim.o.smarttab = true -- Automatically indent new lines
+
+vim.opt.foldmethod = "expr"
+
+vim.o.foldcolumn = "auto" -- '0' is not bad
+vim.o.foldlevel = 49 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 1 -- 99
 vim.o.foldenable = true
 
 vim.schedule(function()
@@ -47,17 +51,12 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.spelllang = { 'en,idn' }
 
--- vim.o.termguicolors = true
+vim.o.termguicolors = true
 vim.cmd ' let g:netrw_liststyle = 4 '
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', 'gf', function()
-  if require('obsidian').util.cursor_on_markdown_link() then
-    return '<cmd>ObsidianFollowLink<CR>'
-  else
-    return 'gf'
-  end
-end, { noremap = false, expr = true })
+
+
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
