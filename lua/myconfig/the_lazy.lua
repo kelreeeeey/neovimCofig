@@ -9,43 +9,51 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    { import = "plugins.lspconfig" },
-    { import = "plugins.lspconfig-languages" },
+    { import = "plugins.colorschemes" },
+    { import = "plugins.transparent" },
+    { import = "plugins.lualine" },
     { import = "plugins.snake-nvim" },
 
-    { import = "plugins.lualine" },
-    { import = "plugins.colorschemes" },
+    { import = "plugins.lspconfig" },
+    { import = "plugins.lspconfig-languages" },
+    { import = "plugins.telescope"  },
+
+    { import = "plugins.nvim-cmp" },
+    { import = "plugins.treesitter" },
+    { import = "plugins.tree-sitter-context" },
+    { import = "plugins.vimtex" },
+
     "alvan/vim-closetag",
     "kiyoon/magick.nvim",
 
-    { import = "plugins.transparent" },
-    { import = "plugins.noice" },
-    { import = "plugins.zen-and-twilight" },
-    { import = "plugins.vimtex" },
     { import = "plugins.whichpy" },
-    { import = "plugins.oil" },
-    { import = "plugins.treesitter" },
-    { import = "plugins.render-markdown" },
-    { import = "plugins.obsidian" },
     { import = "plugins.whichkey" },
-    { import = "plugins.telescope"  },
+
+    { import = "plugins.obsidian" },
+    { import = "plugins.render-markdown" },
+    { import = "plugins.markdown-preview" },
+
     { import = "plugins.luasnip" },
     { import = "plugins.autocompletion" },
+    { import = 'plugins.autopairs' },
+    -- { import = 'legacy.autopairs' },
+    { import = "plugins.surround" },
+
+    { import = "plugins.noice" },
+    { import = "plugins.zen-and-twilight" },
+    { import = "plugins.oil" },
     { import = "plugins.mini"  },
+    { import = "plugins.harpoon2" },
+
     { import = "plugins.persistence" },
     { import = "plugins.todo-folke" },
-    { import = "plugins.harpoon2" },
-    { import = "plugins.tree-sitter-context" },
     -- { import = "plugins.tree-sitter-textobjects" },
-    { import = "plugins.markdown-preview" },
     { import = "plugins.smartcolumn" },
 
     { import = 'legacy.lint' },
-    { import = 'legacy.autopairs' },
     { import = 'legacy.indent_line' },
     { import = 'legacy.debug' },
     { import = 'legacy.gitsigns' },
-    { import = 'legacy.indent_line' },
     { import = 'legacy.lint' },
     ui = {
         icons = vim.g.have_nerd_font and {} or {

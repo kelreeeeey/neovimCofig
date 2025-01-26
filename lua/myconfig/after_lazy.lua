@@ -16,6 +16,12 @@ local default_theme = function (theme)
   end
 end
 
+function ToglleTransparentOff()
+  vim.cmd.TransparentDisable()
+  LineNumberColors()
+end
+
+
 function ToglleTransparent()
   vim.cmd.TransparentToggle()
   LineNumberColors()
