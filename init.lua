@@ -1,4 +1,3 @@
-require("myconfig.before_lazy")
-require("myconfig.the_lazy")
-require("legacy.autocommands")
-require("myconfig.after_lazy")
+require("reys.core")
+require("lazy_bootstrap")
+require("after_lazy")

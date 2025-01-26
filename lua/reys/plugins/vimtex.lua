@@ -16,14 +16,23 @@ return
     --     vim.wo.conceallevel = 0
     --   end,
     -- })
-
+    -- Other settings
+    g.vimtex_mappings_enabled = false          -- Disable default mappings
+    g.tex_flavor = 'latex'                     -- Set file type for TeX files
     g.vimtex_parser_bib_backend = 'bibtex'
-    g.vimtex_mappings_disable = { ["n"] = { "K" } } 
+    g.tex_indent_brace = false                 -- Disable brace indent
+    -- g.vimtex_mappings_disable = { ["n"] = { "K" } } 
     -- g.vimtex_view_skim_sync = 1
     -- g.vimtex_view_skim_activate = 1
     -- g.vimtex_view_skim_reading_bar = 1
     -- g.vimtex_indent_bib_enabled = 1
 
+    g.vimtex_log_ignore = {                    -- Suppress specific log messages
+      'Underfull',
+      'Overfull',
+      'specifier changed to',
+      'Token not allowed in a PDF string',
+    }
     g.vimtex_compiler_method = 'generic'
     g.vimtex_compiler_generic = {
         command = 'bash build_latex.sh *.tex',

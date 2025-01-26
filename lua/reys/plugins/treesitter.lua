@@ -33,7 +33,7 @@ return { -- Highlight, edit, and navigate code
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = { 'ruby' },
-        disable = { "css", "latex", "markdown", "cls" },
+        disable = { "css", "cls" },
       },
 
       autotag = { enable=false, },

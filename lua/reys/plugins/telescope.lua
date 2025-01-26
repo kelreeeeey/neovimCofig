@@ -5,8 +5,10 @@ return  {
     branch = '0.1.x',
     dependencies = {
       {
-      'nvim-lua/plenary.nvim',
+        'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-fzf-native.nvim',
+        "nvim-telescope/telescope-bibtex.nvim",
+        "debugloop/telescope-undo.nvim",
         build = 'make',
         cond = function()
           return vim.fn.executable 'make' == 1
@@ -17,7 +19,7 @@ return  {
     },
     config = function()
       -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').setup {
+      require('telescope').setup{
         pickers = {
           help_tags  = {theme="ivy"},
           keymaps  = {theme="dropdown"},
@@ -29,17 +31,40 @@ return  {
           resume = {theme="dropdown"},
           oldfiles = {theme="dropdown"},
           buffers  = {theme="ivy"},
+          bibtex  = {theme="ivy"},
         },
+        path_display = { "truncate" },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          ['bibtex'] = {
+            theme = require('telescope.themes').get_ivy(),
+            global_files = {
+              "~\\obsidian_vault\\database\\zotero\\zotero_bibtex.bib",
+              "D:\\KELREYS\\undergradproject\\draft\\c0_references\references.bib",
+            },
+            search_keys = { 'author', 'year', 'title' },
+            citation_format = '{{author}} ({{year}}), {{title}}.',
+            citation_trim_firstname = true,
+            citation_max_auth = 2,
+            custom_formats = {
+              { id = 'citet', cite_maker = '\\citet{%s}' },
+              { id = 'citep', cite_maker = '\\citep{%s}' }
+            },
+            format = 'citet',
+            context = true,
+            context_fallback = true,
+            wrap = true,
+          }
         },
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'bibtex')
+      pcall(require('telescope').load_extension, 'yank_history')
 
       -- See `:help telescope.builtin`
       local builtin = require "telescope.builtin"
@@ -70,10 +95,15 @@ return  {
       }
       end, { desc = '[S]earch [/] in Open Files' })
 
-      vim.keymaplset('n', '<leader>sn', function()
-      builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
+      vim.keymap.set('n',
+        '<leader>sn',
+        function()
+          builtin.find_files { cwd = vim.fn.stdpath 'config' }
+        end,
+        { desc = '[S]earch [N]eovim files' }
+      )
     end,
   },
+
   { "nvim-telescope/telescope-live-grep-args.nvim" }
 }

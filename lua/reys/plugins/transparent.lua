@@ -3,7 +3,7 @@ return {
   event = 'VimEnter',
   config = function()
     require("transparent").setup({
-      auto = true,
+      auto = false,
       exclude = {
         "LineNr"
       }

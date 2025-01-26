@@ -9,46 +9,46 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    { import = "plugins.colorschemes" },
-    { import = "plugins.transparent" },
-    { import = "plugins.lualine" },
-    { import = "plugins.snake-nvim" },
+    { import = "reys.plugins.colorschemes" },
+    { import = "reys.plugins.transparent" },
+    { import = "reys.plugins.lualine" },
+    { import = "reys.plugins.snake-nvim" },
 
-    { import = "plugins.lspconfig" },
-    { import = "plugins.lspconfig-languages" },
-    { import = "plugins.telescope"  },
+    { import = "reys.plugins.lspconfig" },
+    { import = "reys.plugins.lspconfig-languages" },
+    { import = "reys.plugins.telescope"  },
 
-    { import = "plugins.nvim-cmp" },
-    { import = "plugins.treesitter" },
-    { import = "plugins.tree-sitter-context" },
-    { import = "plugins.vimtex" },
+    { import = "reys.plugins.nvim-cmp" },
+    { import = "reys.plugins.treesitter" },
+    { import = "reys.plugins.tree-sitter-context" },
+    { import = "reys.plugins.vimtex" },
 
     "alvan/vim-closetag",
     "kiyoon/magick.nvim",
 
-    { import = "plugins.whichpy" },
-    { import = "plugins.whichkey" },
+    { import = "reys.plugins.whichpy" },
+    { import = "reys.plugins.whichkey" },
 
-    { import = "plugins.obsidian" },
-    { import = "plugins.render-markdown" },
-    { import = "plugins.markdown-preview" },
+    { import = "reys.plugins.obsidian" },
+    { import = "reys.plugins.render-markdown" },
+    { import = "reys.plugins.markdown-preview" },
 
-    { import = "plugins.luasnip" },
-    { import = "plugins.autocompletion" },
-    { import = 'plugins.autopairs' },
+    { import = "reys.plugins.luasnip" },
+    { import = "reys.plugins.autocompletion" },
+    { import = 'reys.plugins.autopairs' },
     -- { import = 'legacy.autopairs' },
-    { import = "plugins.surround" },
+    { import = "reys.plugins.surround" },
 
-    { import = "plugins.noice" },
-    { import = "plugins.zen-and-twilight" },
-    { import = "plugins.oil" },
-    { import = "plugins.mini"  },
-    { import = "plugins.harpoon2" },
+    { import = "reys.plugins.noice" },
+    { import = "reys.plugins.zen-and-twilight" },
+    { import = "reys.plugins.oil" },
+    { import = "reys.plugins.mini"  },
+    { import = "reys.plugins.harpoon2" },
 
-    { import = "plugins.persistence" },
-    { import = "plugins.todo-folke" },
+    { import = "reys.plugins.persistence" },
+    { import = "reys.plugins.todo-folke" },
     -- { import = "plugins.tree-sitter-textobjects" },
-    { import = "plugins.smartcolumn" },
+    { import = "reys.plugins.smartcolumn" },
 
     { import = 'legacy.lint' },
     { import = 'legacy.indent_line' },
@@ -73,5 +73,6 @@ require('lazy').setup({
         },
     },
 })
+
 
 

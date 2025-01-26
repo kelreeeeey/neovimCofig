@@ -52,24 +52,28 @@ end
 
 local set_local_options = function(file_type)
     local filetype_config = {
-        js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
         html = {tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
         json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
         yaml = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-        lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
         tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="marker"},
         bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+
+        js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
+        lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
         python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
         c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        md = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-        sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"}
+        sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
+        md = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
+        markdown = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
+        mkd = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
+
     }
 
     local file_config = filetype_config[file_type]
-    set_opt_local(file_config)
-    print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
 
-    if file_type == 'md' then
+    if file_type == 'md' or file_type == "markdown" then
         vim.keymap.set('n', 'gf', function()
           if require('obsidian').util.cursor_on_markdown_link() then
             return '<cmd>ObsidianFollowLink<CR>'
@@ -78,8 +82,11 @@ local set_local_options = function(file_type)
           end
         end, { noremap = false, expr = true })
     elseif file_type == "tex" then
-        vim.cmd.colorscheme("ayu-light")
+        -- vim.cmd.colorscheme("ayu-light")
     end
+
+    print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
+    set_opt_local(file_config)
 
 end
 
