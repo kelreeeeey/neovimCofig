@@ -19,10 +19,16 @@ return  {
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         pickers = {
+          help_tags  = {theme="ivy"},
+          keymaps  = {theme="dropdown"},
           find_files = {theme="ivy"},
-          live_grep = {theme="ivy"},
+          builtin = {theme="iyv"},
           grep_string = {theme="ivy"},
           diagnostics  = {theme="ivy"},
+          live_grep = {theme="ivy"},
+          resume = {theme="dropdown"},
+          oldfiles = {theme="dropdown"},
+          buffers  = {theme="ivy"},
         },
         extensions = {
           ['ui-select'] = {
@@ -64,7 +70,7 @@ return  {
       }
       end, { desc = '[S]earch [/] in Open Files' })
 
-      vim.keymap.set('n', '<leader>sn', function()
+      vim.keymaplset('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
     end,

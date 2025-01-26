@@ -50,6 +50,39 @@ local set_lsp_callback_keymaps = function(map)
 
 end
 
+local set_local_options = function(file_type)
+    local filetype_config = {
+        js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
+        html = {tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
+        json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
+        yaml = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+        lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="marker"},
+        bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+        python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        md = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+        sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"}
+    }
+
+    local file_config = filetype_config[file_type]
+    set_opt_local(file_config)
+    print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
+
+    if file_type == 'md' then
+        vim.keymap.set('n', 'gf', function()
+          if require('obsidian').util.cursor_on_markdown_link() then
+            return '<cmd>ObsidianFollowLink<CR>'
+          else
+            return 'gf'
+          end
+        end, { noremap = false, expr = true })
+    elseif file_type == "tex" then
+        vim.cmd.colorscheme("ayu-light")
+    end
+
+end
+
 return {
     { -- LSP Plugins
         'folke/lazydev.nvim',
@@ -70,6 +103,7 @@ return {
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             { 'j-hui/fidget.nvim', opts = {} },
             'hrsh7th/cmp-nvim-lsp',
+            { "antosha417/nvim-lsp-file-operations", config = true },
         },
         config = function()
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -81,40 +115,8 @@ return {
                         mode = mode or 'n'
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
+
                     set_lsp_callback_keymaps(map)
-
-                    local set_local_options = function(file_type)
-                        local filetype_config = {
-                            js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
-                            html = {tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
-                            json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
-                            yaml = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-                            lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-                            tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-                            bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-                            python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-                            c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-                            md = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-                            sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"}
-                        }
-
-                        local file_config = filetype_config[file_type]
-
-                        set_opt_local(file_config)
-
-                        print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
-                        if file_type == 'md' then
-                            vim.keymap.set('n', 'gf', function()
-                              if require('obsidian').util.cursor_on_markdown_link() then
-                                return '<cmd>ObsidianFollowLink<CR>'
-                              else
-                                return 'gf'
-                              end
-                            end, { noremap = false, expr = true })
-                        end
-
-                    end
-
                     set_local_options(vim.bo.filetype)
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)

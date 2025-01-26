@@ -9,13 +9,13 @@ return
 
     -- disable `K` as it conflicts with LSP hover
     -- from  ( https://inwon.net/blog/vimtex-lazyvim#vimtex )
-    vim.api.nvim_create_autocmd({ "FileType" }, {
-      group = vim.api.nvim_create_augroup("lazyvim_vimtex_conceal", { clear = true }),
-      pattern = { "bib", "tex" },
-      callback = function()
-        vim.wo.conceallevel = 0
-      end,
-    })
+    -- vim.api.nvim_create_autocmd({ "FileType" }, {
+    --   group = vim.api.nvim_create_augroup("lazyvim_vimtex_conceal", { clear = true }),
+    --   pattern = { "bib", "tex" },
+    --   callback = function()
+    --     vim.wo.conceallevel = 0
+    --   end,
+    -- })
 
     g.vimtex_parser_bib_backend = 'bibtex'
     g.vimtex_mappings_disable = { ["n"] = { "K" } } 
