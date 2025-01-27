@@ -56,12 +56,15 @@ local set_local_options = function(file_type)
         json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
         yaml = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
 
-        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="marker"},
+        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
         bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
 
         js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
         lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
         python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        py = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
         c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
         sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
 

@@ -104,7 +104,7 @@ return{
       open_app_foreground = false,
       open_notes_in = 'vsplit',
       ui = {
-        enable = true,
+        enable = false,
       },
     },
 }
