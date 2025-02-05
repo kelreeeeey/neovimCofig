@@ -43,6 +43,7 @@ return  {
             global_files = {
               "~\\obsidian_vault\\database\\zotero\\zotero_bibtex.bib",
               "D:\\KELREYS\\undergradproject\\draft\\c0_references\references.bib",
+              "D:\\KELREYS\\undergradproject\\draft\\c0_references\zotero.bib",
             },
             search_keys = { 'author', 'year', 'title' },
             citation_format = '{{author}} ({{year}}), {{title}}.',

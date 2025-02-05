@@ -52,7 +52,7 @@ require('lazy').setup({
 
     { import = 'legacy.lint' },
     { import = 'legacy.indent_line' },
-    { import = 'legacy.debug' },
+    -- { import = 'legacy.debug' },
     { import = 'legacy.gitsigns' },
     { import = 'legacy.lint' },
     ui = {
