@@ -10,9 +10,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     { import = "reys.plugins.colorschemes" },
-    { import = "reys.plugins.transparent" },
-    { import = "reys.plugins.lualine" },
-    { import = "reys.plugins.snake-nvim" },
+    -- { import = "reys.plugins.transparent" },
+    -- { import = "reys.plugins.lualine" },
+    -- { import = "reys.plugins.snake-nvim" },
 
     { import = "reys.plugins.lspconfig" },
     { import = "reys.plugins.lspconfig-languages" },
@@ -39,8 +39,8 @@ require('lazy').setup({
     -- { import = 'legacy.autopairs' },
     { import = "reys.plugins.surround" },
 
-    { import = "reys.plugins.noice" },
-    { import = "reys.plugins.zen-and-twilight" },
+    -- { import = "reys.plugins.noice" },
+    -- { import = "reys.plugins.zen-and-twilight" },
     { import = "reys.plugins.oil" },
     { import = "reys.plugins.mini"  },
     { import = "reys.plugins.harpoon2" },

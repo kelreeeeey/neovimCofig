@@ -16,16 +16,15 @@ local default_theme = function (theme)
   end
 end
 
-function ToglleTransparentOff()
-  vim.cmd.TransparentDisable()
-  LineNumberColors()
-end
-
-
-function ToglleTransparent()
-  vim.cmd.TransparentToggle()
-  LineNumberColors()
-end
+-- function ToglleTransparentOff()
+--   vim.cmd.TransparentDisable()
+--   LineNumberColors()
+-- end
+-- function ToglleTransparent()
+--   vim.cmd.TransparentToggle()
+--   LineNumberColors()
+-- end
+-- vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
 
 function ToglleColorscheme()
   default_theme(vim.o.background)
@@ -34,7 +33,6 @@ function ToglleColorscheme()
 end
 
 vim.keymap.set('n', "<A-C>", "<CMD>lua ToglleColorscheme()<CR>")
-vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
 vim.keymap.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
 vim.keymap.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
 

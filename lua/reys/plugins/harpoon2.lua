@@ -1,6 +1,7 @@
 return { -- https://github.com/ThePrimeagen/harpoon/issues/474
   "theprimeagen/harpoon",
   branch = "harpoon2",
+  lazy=true,
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     require("harpoon"):setup()

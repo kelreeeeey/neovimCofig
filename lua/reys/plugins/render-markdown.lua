@@ -6,7 +6,9 @@ return {
     'nvim-tree/nvim-web-devicons'
   },
   file_types = { 'markdown', 'vimwiki' },
-  vim.treesitter.language.register('markdown', 'vimwiki', 'latex'),
+  vim.treesitter.language.register('markdown',
+    'vimwiki'),
+    -- 'latex'),
   pipe_table = {
     enabled = true,
     preset = 'none',
