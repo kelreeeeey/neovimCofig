@@ -18,10 +18,13 @@ require('lazy').setup({
     { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
 
+    { import = "reys.plugins.luasnip" },
     { import = "reys.plugins.nvim-cmp" },
     { import = "reys.plugins.treesitter" },
     { import = "reys.plugins.tree-sitter-context" },
     { import = "reys.plugins.vimtex" },
+
+    { import = "reys.plugins.snippets" },
 
     "alvan/vim-closetag",
     "kiyoon/magick.nvim",
@@ -33,7 +36,6 @@ require('lazy').setup({
     { import = "reys.plugins.render-markdown" },
     { import = "reys.plugins.markdown-preview" },
 
-    { import = "reys.plugins.luasnip" },
     { import = "reys.plugins.autocompletion" },
     { import = 'reys.plugins.autopairs' },
     -- { import = 'legacy.autopairs' },

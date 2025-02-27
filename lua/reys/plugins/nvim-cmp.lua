@@ -108,10 +108,10 @@ return {
           vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
           vim_item.menu = ({
             vimtex = vim_item.menu,
-            luasnip = "[Snippet]",
             nvim_lsp = "[LSP]",
-            buffer = "[Buffer]",
+            luasnip = "[Snippet]",
             spell = "[Spell]",
+            buffer = "[Buffer]",
             cmdline = "[CMD]",
             path = "[Path]",
           })[entry.source.name]

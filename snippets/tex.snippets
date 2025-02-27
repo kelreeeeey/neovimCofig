@@ -10,6 +10,63 @@ snippet gloss "Glossary Entry"  b
 	}
 #
 
+# Chapter
+snippet cha \chapter
+	\\chapter{${1:chapter name}}%
+	\\label{cha:${2:$1}}
+	${0}
+
+# Section
+snippet sec \section
+	\\section{${1:section name}}%
+	\\label{sec:${2:$1}}
+	${0}
+
+# Sub Section
+snippet sub \subsection
+	\\subsection{${1:subsection name}}%
+	\\label{subsec:${2:$1}}
+	${0}
+
+snippet par \paragraph
+	\\paragraph{${1:paragraph name}}%
+	\\label{par:${2:$1}}
+	${0}
+
+snippet fig figure environment (includegraphics)
+	\\begin{figure}[ht!]
+	\\begin{center}
+		\\includegraphics[width=${1}\\textwidth, keepaspectratio]{assets/${2}}
+	\\end{center}
+	\\caption{\\textbf{${3}}}
+	\\label{fig:${4}}
+	\\end{figure}
+	${0}
+
+snippet eq equation environment
+	\\begin{equation}
+		${0:${VISUAL}}
+	\\end{equation}
+
+# Enumerate
+snippet enum enumerate environment
+	\\begin{enumerate}
+		\\item ${0}
+	\\end{enumerate}
+snippet enuma enumerate environment
+	\\begin{enumerate}[(a)]
+		\\item ${0}
+	\\end{enumerate}
+snippet enumi enumerate environment
+	\\begin{enumerate}[(i)]
+		\\item ${0}
+	\\end{enumerate}
+
+# \begin{}...\end{}
+snippet begin \begin{} ... \end{} block
+	\\begin{${1:env}}
+		${0:${VISUAL}}
+	\\end{$1}
 
 
 # beamer frame enviornment
