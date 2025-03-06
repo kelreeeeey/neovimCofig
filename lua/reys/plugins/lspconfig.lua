@@ -66,7 +66,11 @@ local set_local_options = function(file_type)
         python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
         py = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
 
+        odin = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
         c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        cpp = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        h = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        zig = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
         sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
 
         md = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
@@ -177,7 +181,37 @@ return {
             local servers = {
                 clangd = {},
                 rust_analyzer = {},
-                pyright = {},
+                pyright = {
+                    settings = {
+                                pyright = {
+                                -- Using Ruff's import organizer
+                                    disableOrganizeImports = true,
+                                },
+                                python = {
+                                    analysis = {
+                                        -- Ignore all files for analysis to exclusively use Ruff for linting
+                                        ignore = { '*' },
+                                    },
+                                },
+                            },
+                },
+                ruff = {
+                    init_options = {
+                        settings = {
+                            configuration = "~/AppData/Local/nvim/ruff.toml",
+                            configurationPreference = "filesystemFirst",
+                            exclude = {"**/tests/**"},
+                            lineLength = 85,
+                            lint = {
+                                enable = true,
+                                preview = true
+                            },
+                        },
+                    },
+                },
+                zls = {},
+                codelldb = {},
+                ols = {},
                 texlab = {},
                 awk_ls = {},
                 lua_ls = {
@@ -198,7 +232,9 @@ return {
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
                 'ruff',
+                'ols',
                 'clangd',
+                'codelldb',
                 'pyright',
                 'zls',
                 'black',

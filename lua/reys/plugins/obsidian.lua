@@ -21,30 +21,24 @@ function workspace_path()
         name = 'Kelrey\'s',
         path = "~/obsidian_vault",
         overrides = {
-          notes_subdir = 'vim_notes',
           templates = {
             folder = "~/obsidian_vault/bins/templates",
             date_format = '%Y-%b-%d',
             time_format = '%H:%M:%m',
           },
-          new_notes_location = 'notes_subdir',
-
         }
       }
   else
     print("You're in Geosiesmal's house")
     return {
-        name = 'LediaPed',
-        path = "~/Kelreys/obsidian_vaults",
+        name = 'Kelreys on Lediapad',
+        path = "~/obsidian_vaults",
         overrides = {
-          notes_subdir = 'vim_notes',
           templates = {
-            folder = "~/Kelreys/obsidian_vaults/bins/templates",
+            folder = "~/obsidian_vaults/bins/templates",
             date_format = '%Y-%b-%d',
             time_format = '%H:%M:%m',
           },
-          new_notes_location = 'notes_subdir',
-
         }
       }
   end
@@ -54,7 +48,7 @@ return{
   -- Obsidian
     'epwalsh/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
-    lazy = true,
+    -- lazy = true,
     ft = 'markdown',
     dependencies = {
       'nvim-lua/plenary.nvim',

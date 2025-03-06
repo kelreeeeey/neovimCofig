@@ -1,4 +1,4 @@
-vim.cmd.colorscheme "ayu"
+vim.cmd.colorscheme "randomhue"
 
 local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true })
@@ -31,6 +31,24 @@ function ToglleColorscheme()
   -- default_theme(vim.g.colors_name)
   LineNumberColors()
 end
+
+local themes = {  -- Define all your themes in order
+    "ayu-light",
+    "ayu-dark",
+    "retrobox",  -- Add your new theme here
+    "randomhue"
+}
+
+local current_theme = 1  -- Start with first theme
+
+local function cycle_theme()
+    -- Cycle through themes using modulo operation
+    current_theme = (current_theme % #themes) + 1
+    vim.cmd.colorscheme(themes[current_theme])
+end
+
+-- Example usage: bind this to a keymap
+vim.keymap.set('n', '<leader>tc', cycle_theme, { desc = 'Cycle themes' })
 
 vim.keymap.set('n', "<A-C>", "<CMD>lua ToglleColorscheme()<CR>")
 vim.keymap.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
