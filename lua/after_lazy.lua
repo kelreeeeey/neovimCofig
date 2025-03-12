@@ -1,4 +1,4 @@
-vim.cmd.colorscheme "randomhue"
+vim.cmd.colorscheme "ayu-dark"
 
 local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true })
@@ -6,13 +6,13 @@ local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
 end
 
-local default_theme = function (theme)
-  if theme == "dark" then
-    vim.cmd.colorscheme("ayu-light")
-  elseif theme == "light" then
+local default_theme = function ()
+  if vim.cmd.background == "dark" then
+    vim.cmd.colorscheme("peachpuff")
+  elseif vim.cmd.colorscheme == "peachpuff" then
     vim.cmd.colorscheme("ayu-dark")
   else
-    vim.cmd.colorscheme("ayu-mirage")
+    vim.cmd.colorscheme("peachpuff")
   end
 end
 
@@ -27,16 +27,15 @@ end
 -- vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
 
 function ToglleColorscheme()
-  default_theme(vim.o.background)
+  default_theme()
   -- default_theme(vim.g.colors_name)
   LineNumberColors()
 end
 
 local themes = {  -- Define all your themes in order
-    "ayu-light",
     "ayu-dark",
     "retrobox",  -- Add your new theme here
-    "randomhue"
+    "peachpuff",
 }
 
 local current_theme = 1  -- Start with first theme

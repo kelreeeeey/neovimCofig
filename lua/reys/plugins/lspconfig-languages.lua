@@ -26,5 +26,21 @@ return {
                 }
             }
         }
+    },
+    require'lspconfig'.ols.setup {
+        init_options = {
+            checker_args = "-strict-style",
+            enable_document_symbols = true,
+            enable_inlay_hints = true,
+            enable_semantic_tokens = true,
+            enable_hover = true,
+            enable_format = true,
+            -- collections = {
+            --     {
+            --         name = "shared",
+            --         path = vim.fn.expand('$HOME/odin-lib')
+            --     }
+            -- },
+        },
     }
 }
