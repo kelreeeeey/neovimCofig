@@ -17,6 +17,7 @@ return { -- Highlight, edit, and navigate code
         'html',
         'lua',
         'luadoc',
+        'odin',
         'markdown',
         'python',
         'query',
@@ -28,7 +29,8 @@ return { -- Highlight, edit, and navigate code
         'vimdoc',
         'zig',
         'elixir',
-        'c' },
+        'c'
+      },
 
       highlight = {
         enable = true,
