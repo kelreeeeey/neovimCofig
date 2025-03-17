@@ -21,6 +21,7 @@ return { -- Highlight, edit, and navigate code
         'markdown',
         'python',
         'query',
+        -- 'glslls',
         'regex',
         'elixir',
         'vim',

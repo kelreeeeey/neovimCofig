@@ -31,21 +31,34 @@ function workspace_path()
   else
     print("You're in Geosiesmal's house")
     return {
-        name = 'Kelreys on Lediapad',
-        path = "~/obsidian_vaults",
-        overrides = {
-          templates = {
-            folder = "~/obsidian_vaults/bins/templates",
-            date_format = '%Y-%b-%d',
-            time_format = '%H:%M:%m',
-          },
+            {
+                name = 'Kelreys on Lediapad',
+                path = "~/obsidian_vaults",
+                overrides = {
+                    templates = {
+                        folder = "~/obsidian_vaults/bins/templates",
+                        date_format = '%Y-%b-%d',
+                        time_format = '%H:%M:%m',
+                    },
+                }
+            },
+            {
+                name = 'yap-on-public',
+                path = "~/obsidian_public",
+                overrides = {
+                    templates = {
+                        folder = "~/obsidian_public/bins/templates/neovim/",
+                        date_format = '%Y-%b-%d',
+                        time_format = '%H:%M:%m',
+                    },
+                    notes_subdir = "content",
+                }
+            }
         }
-      }
   end
 end
 
 return{
-  -- Obsidian
     'epwalsh/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
     lazy = false,
