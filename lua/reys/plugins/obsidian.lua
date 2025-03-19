@@ -15,22 +15,24 @@ local function isdir(path)
 end
 
 function workspace_path()
-  if isdir("C:\\Users\\Lenovo\\obsidian_vault") then
-    print("You're in your home")
-    return {
-        name = 'Kelrey\'s',
-        path = "~/obsidian_vault",
-        overrides = {
-          templates = {
-            folder = "~/obsidian_vault/bins/templates",
-            date_format = '%Y-%b-%d',
-            time_format = '%H:%M:%m',
-          },
-        }
-      }
-  else
-    print("You're in Geosiesmal's house")
-    return {
+    if isdir("C:\\Users\\Lenovo\\obsidian_vault") then
+        print("You're in your home")
+        return {
+                {
+                    name = 'Kelrey\'s',
+                    path = "~/obsidian_vault",
+                    overrides = {
+                        templates = {
+                            folder = "~/obsidian_vault/bins/templates",
+                            date_format = '%Y-%b-%d',
+                            time_format = '%H:%M:%m',
+                        },
+                    }
+                },
+            }
+    else
+        print("You're in Geosiesmal's house")
+        return {
             {
                 name = 'Kelreys on Lediapad',
                 path = "~/obsidian_vaults",
@@ -43,11 +45,11 @@ function workspace_path()
                 }
             },
             {
-                name = 'yap-on-public',
+                name = 'yap on public',
                 path = "~/obsidian_public",
                 overrides = {
                     templates = {
-                        folder = "~/obsidian_public/bins/templates/neovim/",
+                        folder = "~/obsidian_public/bins/templates/neovim",
                         date_format = '%Y-%b-%d',
                         time_format = '%H:%M:%m',
                     },
@@ -55,7 +57,7 @@ function workspace_path()
                 }
             }
         }
-  end
+    end
 end
 
 return{
@@ -67,9 +69,7 @@ return{
       'nvim-lua/plenary.nvim',
     },
     opts = {
-      workspaces = {
-        workspace_path()
-      },
+      workspaces = workspace_path(),
 
       daily_notes = {
         folder = 'log/daily',

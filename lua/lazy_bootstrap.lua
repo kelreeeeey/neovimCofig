@@ -25,6 +25,7 @@ require('lazy').setup({
     { import = "reys.plugins.vimtex" },
 
     { import = "reys.plugins.snippets" },
+    { import = "reys.plugins.hardtime-neovim" },
 
     "alvan/vim-closetag",
     "kiyoon/magick.nvim",
