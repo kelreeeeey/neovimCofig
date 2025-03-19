@@ -2,6 +2,6 @@ return {
    "m4xshen/hardtime.nvim",
    dependencies = { "MunifTanjim/nui.nvim" },
    opts = function ()
-        require("hardtime").setup()
+        require("hardtime"):setup()
    end
 }
