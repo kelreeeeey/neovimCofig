@@ -42,6 +42,7 @@ function workspace_path()
                         date_format = '%Y-%b-%d',
                         time_format = '%H:%M:%m',
                     },
+                    notes_subdir = "./",
                 }
             },
             {
@@ -63,7 +64,7 @@ end
 return{
     'epwalsh/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
-    lazy = false,
+    lazy = true,
     ft = 'markdown',
     dependencies = {
       'nvim-lua/plenary.nvim',

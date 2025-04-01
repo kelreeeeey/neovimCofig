@@ -25,7 +25,7 @@ require('lazy').setup({
     { import = "reys.plugins.vimtex" },
 
     { import = "reys.plugins.snippets" },
-    { import = "reys.plugins.hardtime-neovim" },
+    -- { import = "reys.plugins.hardtime-neovim" },
 
     "alvan/vim-closetag",
     "kiyoon/magick.nvim",
@@ -47,6 +47,7 @@ require('lazy').setup({
     { import = "reys.plugins.oil" },
     { import = "reys.plugins.mini"  },
     { import = "reys.plugins.harpoon2" },
+    { import = "reys.plugins.lsp_line" },
 
     { import = "reys.plugins.persistence" },
     { import = "reys.plugins.todo-folke" },

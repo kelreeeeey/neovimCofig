@@ -115,6 +115,11 @@ return {
                 s = { "<cmd>Telescope git_status<CR>", "git status" },
                 t = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "toggle blame" },
             },
+            h = {
+                name = "Hardtime",
+                t = { "<cmd>Hardtime toggle<cr>", "Toggle Hardtime" },
+                r = { "<cmd>Hardtime report<cr>", "Report Hardtime" }
+            },
             H = {
                 name = "HARPOON",
                 A = { "<cmd>lua require('harpoon'):list():add()<cr>", "mark" },

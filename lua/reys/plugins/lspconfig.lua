@@ -54,7 +54,11 @@ local set_local_options = function(file_type)
     local filetype_config = {
         html = {tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
         json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
-        yaml = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+        yaml = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
+
+        ex = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
+        exs = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
+        elixir = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
 
         latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="indent"},
         tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="indent"},

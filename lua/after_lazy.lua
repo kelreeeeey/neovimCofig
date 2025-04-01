@@ -32,9 +32,9 @@ function ToglleColorscheme()
   LineNumberColors()
 end
 
-local themes = {  -- Define all your themes in order
+local themes = {
     "ayu-dark",
-    "retrobox",  -- Add your new theme here
+    "retrobox",
     "peachpuff",
 }
 
@@ -67,4 +67,9 @@ vim.keymap.set("n", "<S-A-h>", "50<C-w><")
 vim.keymap.set("n", "<S-A-l>", "50<C-w>>")
 vim.keymap.set("n", "<S-A-j>", "50<C-w>-")
 vim.keymap.set("n", "<S-A-k>", "50<C-w>+")
+vim.diagnostic.config({
+    virtual_lines=true,
+    virtual_text=true,
+    underline=true,
+})
 LineNumberColors()
