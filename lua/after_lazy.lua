@@ -1,4 +1,3 @@
-vim.cmd.colorscheme "ayu-dark"
 
 local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true })
@@ -6,36 +5,39 @@ local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
 end
 
+vim.cmd.colorscheme "ayu-dark"
+LineNumberColors()
+
 local default_theme = function ()
-  if vim.cmd.background == "dark" then
-    vim.cmd.colorscheme("peachpuff")
-  elseif vim.cmd.colorscheme == "peachpuff" then
-    vim.cmd.colorscheme("ayu-dark")
-  else
-    vim.cmd.colorscheme("peachpuff")
-  end
+    if vim.cmd.background == "dark" or vim.cmd.colorscheme == "retrobox" then
+        vim.cmd.colorscheme("shine")
+    elseif vim.cmd.colorscheme == "shine" then
+        vim.cmd.colorscheme("ayu-dark")
+    else
+        vim.cmd.colorscheme("shine")
+    end
 end
 
--- function ToglleTransparentOff()
---   vim.cmd.TransparentDisable()
---   LineNumberColors()
--- end
--- function ToglleTransparent()
---   vim.cmd.TransparentToggle()
---   LineNumberColors()
--- end
--- vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
+function ToglleTransparentOff()
+  vim.cmd.TransparentDisable()
+  LineNumberColors()
+end
+function ToglleTransparent()
+  vim.cmd.TransparentToggle()
+  LineNumberColors()
+end
+vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
 
 function ToglleColorscheme()
-  default_theme()
-  -- default_theme(vim.g.colors_name)
-  LineNumberColors()
+    default_theme()
+    -- default_theme(vim.g.colors_name)
+    LineNumberColors()
 end
 
 local themes = {
     "ayu-dark",
     "retrobox",
-    "peachpuff",
+    "shine",
 }
 
 local current_theme = 1  -- Start with first theme
@@ -44,12 +46,13 @@ local function cycle_theme()
     -- Cycle through themes using modulo operation
     current_theme = (current_theme % #themes) + 1
     vim.cmd.colorscheme(themes[current_theme])
+    LineNumberColors()
 end
 
 -- Example usage: bind this to a keymap
 vim.keymap.set('n', '<leader>tc', cycle_theme, { desc = 'Cycle themes' })
 
-vim.keymap.set('n', "<A-C>", "<CMD>lua ToglleColorscheme()<CR>")
+-- vim.keymap.set('n', "<A-C>", "<CMD>lua ToglleColorscheme()<CR>")
 vim.keymap.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
 vim.keymap.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
 
@@ -69,7 +72,8 @@ vim.keymap.set("n", "<S-A-j>", "50<C-w>-")
 vim.keymap.set("n", "<S-A-k>", "50<C-w>+")
 vim.diagnostic.config({
     virtual_lines=true,
-    virtual_text=true,
     underline=true,
+    virtual_text=false,
+
 })
-LineNumberColors()
+ToglleTransparentOff()
