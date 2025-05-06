@@ -109,7 +109,7 @@ return {
             g = {
                 name = "GIT",
                 c = { "<cmd>Telescope git_commits<CR>", "git commit history" },
-                g = { "<cmd>lua Snacks.lazygit()<cr>", "lazygit" },
+                -- g = { "<cmd>lua Snacks.lazygit()<cr>", "lazygit" },
                 k = { "<cmd>Gitsigns prev_hunk<CR>", "prev hunk" },
                 j = { "<cmd>Gitsigns next_hunk<CR>", "next hunk" },
                 s = { "<cmd>Telescope git_status<CR>", "git status" },

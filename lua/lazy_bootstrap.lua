@@ -37,7 +37,7 @@ require('lazy').setup({
     { import = "reys.plugins.render-markdown" },
     { import = "reys.plugins.markdown-preview" },
 
-    { import = "reys.plugins.autocompletion" },
+    -- { import = "reys.plugins.autocompletion" },
     { import = 'reys.plugins.autopairs' },
     -- { import = 'legacy.autopairs' },
     { import = "reys.plugins.surround" },
@@ -77,6 +77,4 @@ require('lazy').setup({
         },
     },
 })
-
-
 

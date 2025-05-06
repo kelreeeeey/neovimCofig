@@ -28,7 +28,7 @@ end)
 
 vim.opt.breakindent = true
 vim.opt.autoindent = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
