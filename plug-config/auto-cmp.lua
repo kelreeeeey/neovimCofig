@@ -1,0 +1,6 @@
+vim.cmd [[
+    let g:UltiSnipsSnippetDirectories  = ['~\\AppData\\Local\\nvim\\UltiSnips']
+    let g:UltiSnipsExpandTrigger       = '<Tab>'
+    let g:UltiSnipsJumpForwardTrigger  = '<Tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+]]
