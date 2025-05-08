@@ -18,11 +18,11 @@ require('lazy').setup({
     { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
 
-    { import = "reys.plugins.luasnip" },
+    -- { import = "reys.plugins.luasnip" },
     { import = "reys.plugins.nvim-cmp" },
     { import = "reys.plugins.tree-sitter-setup" },
     { import = "reys.plugins.tree-sitter-context" },
-    { import = "reys.plugins.vimtex" },
+    -- { import = "reys.plugins.vimtex" },
 
     { import = "reys.plugins.snippets" },
     -- { import = "reys.plugins.hardtime-neovim" },
