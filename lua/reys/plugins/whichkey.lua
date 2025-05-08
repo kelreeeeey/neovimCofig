@@ -89,6 +89,8 @@ return {
             k = { "<cmd>on<CR>", "max split" },
             q = { "<cmd>wa! | qa!<CR>", "quit" },
             w = { "<cmd>wa!<CR>", "write" },
+            x = { "<cmd>luafile %<CR>", "execute this lua file" },
+            p = { "<cmd>lua require('present').start_presentation{}<CR>", "Present Markdown in NVIM" },
             f = {
                 name = "FIND",
                 c = { "<cmd>Telescope bibtex format_string=\\citet{%s} theme=ivy<CR>", "citations" },

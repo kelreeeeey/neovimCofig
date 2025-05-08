@@ -1,13 +1,14 @@
 local foldmethod_guards = function(fold_method)
     vim.api.nvim_create_autocmd({ "FileType" }, {
-    callback = function()
-      if fold_method == "expr" and require("nvim-treesitter.parsers").has_parser() then
-          vim.opt_local.foldmethod = fold_method
-          vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
-      else
-          vim.opt_local.foldmethod = fold_method
-      end
-    end,
+        callback = function()
+            if fold_method == "expr" and require("nvim-treesitter.parsers").has_parser() then
+                vim.opt_local.foldmethod = fold_method
+                -- vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+                vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            else
+                vim.opt_local.foldmethod = fold_method
+            end
+        end,
     })
 end
 
@@ -60,7 +61,7 @@ local set_local_options = function(file_type)
         exs = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
         elixir = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
 
-        latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="indent"},
+        latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
         tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="indent"},
         bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
 
@@ -96,7 +97,7 @@ local set_local_options = function(file_type)
         -- vim.cmd.colorscheme("ayu-light")
     end
 
-    print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
+    -- print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
     set_opt_local(file_config)
 
 end
@@ -233,20 +234,44 @@ return {
             require('mason').setup()
 
             local ensure_installed = vim.tbl_keys(servers or {})
+
+    -- ◍ ltex-ls-plus
+    -- ◍ latexindent
+    -- ◍ awk-language-server awk_ls
+    -- ◍ black
+    -- ◍ clangd
+    -- ◍ codelldb
+    -- ◍ elixir-ls elixirls
+    -- ◍ html-lsp html
+    -- ◍ lua-language-server lua_ls
+    -- ◍ ols
+    -- ◍ pyright
+    -- ◍ ruff
+    -- ◍ rust-analyzer rust_analyzer
+    -- ◍ stylua
+    -- ◍ texlab
+    -- ◍ yaml-language-server yamlls
+    -- ◍ zls
+
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
-                'ruff',
                 'ols',
-                -- 'glslls',
+
                 'clangd',
                 'codelldb',
-                'pyright',
                 'zls',
+                "ltex-ls-plus",
+                "latexindent",
+                'ruff',
+                'pyright',
                 'black',
+
                 'elixir-ls',
-                'awk-language-server',
                 'html-lsp',
+
                 "yaml-language-server",
+                'awk-language-server',
+                'lua-language-server',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

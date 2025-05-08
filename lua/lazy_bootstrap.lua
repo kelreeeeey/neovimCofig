@@ -20,7 +20,7 @@ require('lazy').setup({
 
     { import = "reys.plugins.luasnip" },
     { import = "reys.plugins.nvim-cmp" },
-    { import = "reys.plugins.treesitter" },
+    { import = "reys.plugins.tree-sitter-setup" },
     { import = "reys.plugins.tree-sitter-context" },
     { import = "reys.plugins.vimtex" },
 
@@ -34,7 +34,8 @@ require('lazy').setup({
     { import = "reys.plugins.whichkey" },
 
     { import = "reys.plugins.obsidian" },
-    { import = "reys.plugins.render-markdown" },
+    -- { import = "reys.plugins.render-markdown" },
+    { import = "reys.plugins.markview" },
     { import = "reys.plugins.markdown-preview" },
 
     -- { import = "reys.plugins.autocompletion" },
@@ -53,6 +54,9 @@ require('lazy').setup({
     { import = "reys.plugins.todo-folke" },
     -- { import = "plugins.tree-sitter-textobjects" },
     { import = "reys.plugins.smartcolumn" },
+
+    -- dev plugins
+    { import = "reys.plugins.dev" },
 
     { import = 'legacy.lint' },
     { import = 'legacy.indent_line' },

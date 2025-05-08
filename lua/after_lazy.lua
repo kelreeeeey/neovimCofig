@@ -59,6 +59,7 @@ vim.keymap.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
 -- insert mode deletion
 vim.keymap.set("n", "\\", "<CMD>Oil<CR>", { desc = "Open parent directory in floating window" })
 vim.keymap.set("n", "|", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+-- vim.keymap.set("n", "<leader><leader>x", "<CMD>luafile %<CR>", { desc = "execute this lua file" })
 
 -- NOTE: window resizing
 vim.keymap.set("n", "<A-h>", "5<C-w><")
@@ -77,3 +78,5 @@ vim.diagnostic.config({
 
 })
 ToglleTransparentOff()
+
+
