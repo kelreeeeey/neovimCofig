@@ -61,8 +61,8 @@ local set_local_options = function(file_type)
         exs = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
         elixir = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
 
-        latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="indent"},
+        latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
         bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
 
         js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
@@ -217,7 +217,6 @@ return {
                 zls = {},
                 codelldb = {},
                 ols = {},
-                texlab = {},
                 awk_ls = {},
                 lua_ls = {
                     settings = {

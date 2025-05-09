@@ -36,7 +36,7 @@ require('lazy').setup({
     { import = "reys.plugins.obsidian" },
     -- { import = "reys.plugins.render-markdown" },
     { import = "reys.plugins.markview" },
-    { import = "reys.plugins.markdown-preview" },
+    -- { import = "reys.plugins.markdown-preview" },
 
     -- { import = "reys.plugins.autocompletion" },
     { import = 'reys.plugins.autopairs' },

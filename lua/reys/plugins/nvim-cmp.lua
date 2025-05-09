@@ -1,21 +1,22 @@
 return {
     "hrsh7th/nvim-cmp",
     -- commit = pin_commit("2e4270d02843d15510b3549354e238788ca07ca5"),
+    lazy = true,
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer", -- source for text in buffer
       "hrsh7th/cmp-path", -- source for file system paths
-      "L3MON4D3/LuaSnip", -- snippet engine
-      "saadparwaiz1/cmp_luasnip", -- for autocompletion
+      -- "L3MON4D3/LuaSnip", -- snippet engine
+      -- "saadparwaiz1/cmp_luasnip", -- for autocompletion
       "hrsh7th/cmp-cmdline",
       "petertriho/cmp-git",
       "f3fora/cmp-spell",
-      "micangl/cmp-vimtex",
+      -- "micangl/cmp-vimtex",
       'dcampos/cmp-snippy'
     },
     config = function()
         local cmp = require("cmp")
-        local luasnip = require("luasnip")
+        -- local luasnip = require("luasnip")
         local kind_icons = {
             article = "󰧮",
             book = "",
@@ -106,7 +107,7 @@ return {
               -- kind icons
               vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
               vim_item.menu = ({
-                vimtex = vim_item.menu,
+                -- vimtex = vim_item.menu,
                 nvim_lsp = "[LSP]",
                 snippy = "[Snippet]",
                 spell = "[Spell]",
@@ -117,18 +118,18 @@ return {
               return vim_item
             end,
           },
-        
+
           sources = cmp.config.sources({
-        
+
             { name = "nvim_lsp" },
-        
+
             -- { name = "luasnip" },
             { name = "snippy" },
-        
+
             -- { name = "vimtex" },
-        
+
             { name = "buffer", keyword_length = 3 },
-        
+
             { name = "spell", keyword_length = 4, option = {
                                                     keep_all_entries = false,
                                                     enable_in_context = function()
@@ -136,30 +137,30 @@ return {
                                                     end
                                                   },
             },
-        
+
             { name = "path" },
           }),
-        
+
           confirm_opts = {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
           },
-        
+
           view = { entries = "custom" },
-        
+
           window = {
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
           },
-        
+
           performance = {
             trigger_debounce_time = 500,
             throttle = 550,
             fetching_timeout = 80,
           },
-        
+
         })
-        
+
         cmp.setup.cmdline("/",
         {
           mapping = cmp.mapping.preset.cmdline(),
@@ -167,7 +168,7 @@ return {
             { name = "buffer" }
           }
         })
-        
+
         cmp.setup.cmdline(":",
         {
           mapping = cmp.mapping.preset.cmdline(),
@@ -176,6 +177,6 @@ return {
             { name = "cmdline" }
           }
         })
-        
+
         end
 }
