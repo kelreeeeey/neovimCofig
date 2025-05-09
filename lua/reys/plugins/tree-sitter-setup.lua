@@ -18,6 +18,7 @@ return {
         -- "nvim-treesitter/nvim-treesitter-textobjects",
         "JoosepAlviste/nvim-ts-context-commentstring",
         "windwp/nvim-ts-autotag",
+        -- "OXY2DEV/markview.nvim",
     },
     keys = {
         { "<c-space>", desc = "Increment Selection" },

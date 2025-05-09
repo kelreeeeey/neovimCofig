@@ -120,7 +120,7 @@ return {
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
-            { 'j-hui/fidget.nvim', opts = {} },
+            { 'j-hui/fidget.nvim', lazy=true, opts = {} },
             'hrsh7th/cmp-nvim-lsp',
             { "antosha417/nvim-lsp-file-operations", config = true },
         },
@@ -185,7 +185,7 @@ return {
 
             local servers = {
                 clangd = {},
-                rust_analyzer = {},
+                -- rust_analyzer = {},
                 pyright = {
                     settings = {
                                 pyright = {
@@ -228,29 +228,36 @@ return {
                         },
                     },
                 },
+                markdown_oxide = {},
+                -- ltex_plus = {
+                --     settings = {
+                --         enable = {
+                --             "bibtex", "context", "context.tex", "html", "latex", "asciidoc",
+                --             "neorg", "org", "quarto", "restructuredtext", "rsweave"
+                --         }
+                --     }
+                -- }
             }
 
             require('mason').setup()
 
             local ensure_installed = vim.tbl_keys(servers or {})
 
-    -- ◍ ltex-ls-plus
-    -- ◍ latexindent
-    -- ◍ awk-language-server awk_ls
-    -- ◍ black
-    -- ◍ clangd
-    -- ◍ codelldb
-    -- ◍ elixir-ls elixirls
-    -- ◍ html-lsp html
-    -- ◍ lua-language-server lua_ls
-    -- ◍ ols
-    -- ◍ pyright
-    -- ◍ ruff
-    -- ◍ rust-analyzer rust_analyzer
-    -- ◍ stylua
-    -- ◍ texlab
-    -- ◍ yaml-language-server yamlls
-    -- ◍ zls
+  -- Installed
+  --   ◍ markdown-oxide markdown_oxide
+  --   ◍ texlab
+  --   ◍ awk-language-server awk_ls
+  --   ◍ clangd
+  --   ◍ elixir-ls elixirls
+  --   ◍ html-lsp html
+  --   ◍ lua-language-server lua_ls
+  --   ◍ ols
+  --   ◍ pyright
+  --   ◍ ruff
+  --   ◍ rust-analyzer rust_analyzer
+  --   ◍ yaml-language-server yamlls
+  --   ◍ zls
+
 
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
@@ -259,8 +266,10 @@ return {
                 'clangd',
                 'codelldb',
                 'zls',
-                "ltex-ls-plus",
+                -- "ltex-ls-plus",
                 "latexindent",
+                "texlab",
+                "markdown-oxide",
                 'ruff',
                 'pyright',
                 'black',
