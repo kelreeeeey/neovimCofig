@@ -14,7 +14,7 @@ local function isdir(path)
    return exists(path.."/")
 end
 
-function workspace_path()
+local function workspace_path()
     if isdir("C:\\Users\\Lenovo\\obsidian_vault") then
         print("You're in your home")
         return {
@@ -64,6 +64,7 @@ end
 return{
     'epwalsh/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
+    -- event = { "VeryLazy" },
     lazy = true,
     ft = 'markdown',
     dependencies = {
@@ -87,7 +88,7 @@ return{
       end,
       sort_by = 'modified',
       sort_reversed = true,
-      search_max_lines = 1000,
+      search_max_lines = 250,
       picker = {
         name = 'telescope.nvim',
         note_mappings = {

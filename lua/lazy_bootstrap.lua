@@ -47,8 +47,8 @@ require('lazy').setup({
     -- { import = "reys.plugins.zen-and-twilight" },
     { import = "reys.plugins.oil" },
     { import = "reys.plugins.mini"  },
-    { import = "reys.plugins.harpoon2" },
-    { import = "reys.plugins.lsp_line" },
+    -- { import = "reys.plugins.harpoon2" },
+    -- { import = "reys.plugins.lsp_line" },
 
     { import = "reys.plugins.persistence" },
     { import = "reys.plugins.todo-folke" },

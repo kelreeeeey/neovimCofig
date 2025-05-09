@@ -3,8 +3,8 @@ local foldmethod_guards = function(fold_method)
         callback = function()
             if fold_method == "expr" and require("nvim-treesitter.parsers").has_parser() then
                 vim.opt_local.foldmethod = fold_method
-                -- vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
-                vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+                vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+                -- vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
             else
                 vim.opt_local.foldmethod = fold_method
             end
@@ -53,6 +53,28 @@ end
 
 local set_local_options = function(file_type)
     local filetype_config = {
+
+        md = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
+        markdown = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
+        mkd = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
+
+        latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+        bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
+
+        lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
+        python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        py = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
+        odin = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
+        c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        cpp = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        h = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+        zig = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
+
         html = {tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
         json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
         yaml = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
@@ -60,42 +82,23 @@ local set_local_options = function(file_type)
         ex = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
         exs = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
         elixir = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
-
-        latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-        bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-
         js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
-        lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
 
-        python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        py = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-
-        odin = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        cpp = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        h = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        zig = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-
-        md = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
-        markdown = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
-        mkd = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
     }
 
     local file_config = filetype_config[file_type]
 
-    if file_type == 'md' or file_type == "markdown" then
-        vim.keymap.set('n', 'gf', function()
-          if require('obsidian').util.cursor_on_markdown_link() then
-            return '<cmd>ObsidianFollowLink<CR>'
-          else
-            return 'gf'
-          end
-        end, { noremap = false, expr = true })
-    elseif file_type == "tex" then
-        -- vim.cmd.colorscheme("ayu-light")
-    end
+    -- if file_type == 'md' or file_type == "markdown" then
+    --     vim.keymap.set('n', 'gf', function()
+    --       if require('obsidian').util.cursor_on_markdown_link() then
+    --         return '<cmd>ObsidianFollowLink<CR>'
+    --       else
+    --         return 'gf'
+    --       end
+    --     end, { noremap = false, expr = true })
+    -- elseif file_type == "tex" then
+    --     -- vim.cmd.colorscheme("ayu-light")
+    -- end
 
     -- print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
     set_opt_local(file_config)
@@ -115,14 +118,15 @@ return {
     { 'Bilal2453/luvit-meta', lazy = true },
     { -- Main LSP config.
         'neovim/nvim-lspconfig',
+        event = "BufReadPre",
         dependencies = {
             -- NOTE: Must be loaded before dependants
-            { 'williamboman/mason.nvim', config = true },
+            { 'williamboman/mason.nvim', event = "BufReadPre", config = true },
             'williamboman/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
-            { 'j-hui/fidget.nvim', lazy=true, opts = {} },
+            -- { 'j-hui/fidget.nvim', lazy=true, event = "BufReadPre", opts = {} },
             'hrsh7th/cmp-nvim-lsp',
-            { "antosha417/nvim-lsp-file-operations", config = true },
+            { "antosha417/nvim-lsp-file-operations", config = false,},
         },
         config = function()
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -244,41 +248,40 @@ return {
             local ensure_installed = vim.tbl_keys(servers or {})
 
   -- Installed
-  --   ◍ markdown-oxide markdown_oxide
-  --   ◍ texlab
-  --   ◍ awk-language-server awk_ls
-  --   ◍ clangd
   --   ◍ elixir-ls elixirls
-  --   ◍ html-lsp html
+  --   ◍ awk-language-server awk_ls
+  --   ◍ bash-language-server bashls
+  --   ◍ black
+  --   ◍ clangd
+  --   ◍ latexindent
   --   ◍ lua-language-server lua_ls
   --   ◍ ols
   --   ◍ pyright
   --   ◍ ruff
-  --   ◍ rust-analyzer rust_analyzer
-  --   ◍ yaml-language-server yamlls
-  --   ◍ zls
+  --   ◍ texlab
+
 
 
             vim.list_extend(ensure_installed, {
-                'stylua', -- Used to format Lua code
+                -- 'stylua', -- Used to format Lua code
                 'ols',
-
                 'clangd',
-                'codelldb',
-                'zls',
+                -- 'codelldb',
+                -- 'zls',
                 -- "ltex-ls-plus",
                 "latexindent",
                 "texlab",
-                "markdown-oxide",
+                -- "markdown-oxide",
                 'ruff',
                 'pyright',
                 'black',
+                "bashls",
 
                 'elixir-ls',
-                'html-lsp',
+                -- 'html-lsp',
 
-                "yaml-language-server",
-                'awk-language-server',
+                -- "yaml-language-server",
+                -- 'awk-language-server',
                 'lua-language-server',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }

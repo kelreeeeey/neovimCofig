@@ -7,7 +7,7 @@ return { -- Highlight, edit, and navigate code
   dependencies = {
     -- "nvim-treesitter/nvim-treesitter-textobjects",
     "JoosepAlviste/nvim-ts-context-commentstring",
-    "windwp/nvim-ts-autotag",
+    -- "windwp/nvim-ts-autotag",
   },
   config = function()
     require("nvim-treesitter.configs").setup({
@@ -39,7 +39,7 @@ return { -- Highlight, edit, and navigate code
         disable = { "css", "cls" },
       },
 
-      autotag = { enable=false, },
+      -- autotag = { enable=false, },
 
       indent = { enable = true, disable = { 'ruby' } },
 

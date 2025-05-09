@@ -1,7 +1,8 @@
 -- source: https://github.com/benbrastmckie/.config/blob/d0ab9efed832aa379ebed6e1d8b6e20225b83331/nvim/lua/neotex/plugins/which-key.lua
 return {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    event = "VimEnter",
     dependencies = { 'echasnovski/mini.nvim',},
     opts = {
         setup = {

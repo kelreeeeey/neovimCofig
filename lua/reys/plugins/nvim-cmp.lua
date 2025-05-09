@@ -4,15 +4,15 @@ return {
     lazy = true,
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-        {"hrsh7th/cmp-buffer", lazy=true}, -- source for text in buffer
-        {"hrsh7th/cmp-path", lazy=true}, -- source for file system paths
+        {"hrsh7th/cmp-buffer", lazy=true, event = { "InsertEnter", "CmdlineEnter" }}, -- source for text in buffer
+        {"hrsh7th/cmp-path", lazy=true, event = { "InsertEnter", "CmdlineEnter" }}, -- source for file system paths
         -- "L3MON4D3/LuaSnip", -- snippet engine
         -- "saadparwaiz1/cmp_luasnip", -- for autocompletion
-        {"hrsh7th/cmp-cmdline", lazy=true},
+        {"hrsh7th/cmp-cmdline", lazy=true, event = { "InsertEnter", "CmdlineEnter" }},
         "petertriho/cmp-git",
         -- "f3fora/cmp-spell",
         -- "micangl/cmp-vimtex",
-        {'dcampos/cmp-snippy', lazy=true}
+        {'dcampos/cmp-snippy', lazy=true, event = { "InsertEnter", "CmdlineEnter" }}
     },
     config = function()
         local cmp = require("cmp")
