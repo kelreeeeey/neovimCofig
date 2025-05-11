@@ -1,33 +1,3 @@
-local foldmethod_guards = function(fold_method)
-    vim.api.nvim_create_autocmd({ "FileType" }, {
-        callback = function()
-            if fold_method == "expr" and require("nvim-treesitter.parsers").has_parser() then
-                vim.opt_local.foldmethod = fold_method
-                vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
-                -- vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            else
-                vim.opt_local.foldmethod = fold_method
-            end
-        end,
-    })
-end
-
-function Tprint (tbl)
-    for index, data in pairs(tbl) do
-        for key, value in pairs(data) do
-            print('\t', index, key, value)
-        end
-    end
-end
-
-local set_opt_local = function(fileconfigs)
-    vim.opt_local.tabstop = fileconfigs.tabstop -- Number of spaces a tab represents
-    vim.opt_local.shiftwidth = fileconfigs.shiftwidth -- Number of spaces for each indentation
-    vim.opt_local.expandtab = fileconfigs.expandtab -- Convert tabs to spaces
-    vim.opt_local.smartindent = fileconfigs.smartindent -- Automatically indent new lines
-    foldmethod_guards(fileconfigs.foldmethod)
-end
-
 local set_lsp_callback_keymaps = function(map)
 
     local tele = require 'telescope.builtin'
@@ -51,60 +21,6 @@ local set_lsp_callback_keymaps = function(map)
 
 end
 
-local set_local_options = function(file_type)
-    local filetype_config = {
-
-        md = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
-        markdown = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
-        mkd = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
-
-        latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-        tex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-        bib = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},
-
-        lua = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-
-        python = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        py = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-
-        odin = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        sh = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-
-        c = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        cpp = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        h = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-        zig = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
-
-        html = {tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
-        json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
-        yaml = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
-
-        ex = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
-        exs = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
-        elixir = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
-        js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
-
-    }
-
-    local file_config = filetype_config[file_type]
-
-    -- if file_type == 'md' or file_type == "markdown" then
-    --     vim.keymap.set('n', 'gf', function()
-    --       if require('obsidian').util.cursor_on_markdown_link() then
-    --         return '<cmd>ObsidianFollowLink<CR>'
-    --       else
-    --         return 'gf'
-    --       end
-    --     end, { noremap = false, expr = true })
-    -- elseif file_type == "tex" then
-    --     -- vim.cmd.colorscheme("ayu-light")
-    -- end
-
-    -- print('filetype=', file_type, ' set fold_method to: ', file_config.foldmethod)
-    set_opt_local(file_config)
-
-end
-
 return {
     { -- LSP Plugins
         'folke/lazydev.nvim',
@@ -119,6 +35,7 @@ return {
     { -- Main LSP config.
         'neovim/nvim-lspconfig',
         event = "BufReadPre",
+        lazy = true,
         dependencies = {
             -- NOTE: Must be loaded before dependants
             { 'williamboman/mason.nvim', event = "BufReadPre", config = true },
@@ -140,17 +57,16 @@ return {
                     end
 
                     set_lsp_callback_keymaps(map)
-                    set_local_options(vim.bo.filetype)
 
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
                     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
                         local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
 
-                        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
+                        -- vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                        --     buffer = event.buf,
+                        --     group = highlight_augroup,
+                        --     callback = vim.lsp.buf.document_highlight,
+                        -- })
 
                         vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
                             buffer = event.buf,

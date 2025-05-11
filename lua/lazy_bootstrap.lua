@@ -14,8 +14,8 @@ require('lazy').setup({
     -- { import = "reys.plugins.lualine" },
     -- { import = "reys.plugins.snake-nvim" },
 
-    { import = "reys.plugins.lspconfig" },
-    { import = "reys.plugins.lspconfig-languages" },
+    -- { import = "reys.plugins.lspconfig" },
+    -- { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
 
     -- { import = "reys.plugins.luasnip" },
@@ -29,6 +29,7 @@ require('lazy').setup({
 
     "alvan/vim-closetag",
     "kiyoon/magick.nvim",
+    "MunifTanjim/nui.nvim",
 
     { import = "reys.plugins.whichpy" },
     { import = "reys.plugins.whichkey" },
@@ -63,6 +64,7 @@ require('lazy').setup({
     -- { import = 'legacy.debug' },
     { import = 'legacy.gitsigns' },
     { import = 'legacy.lint' },
+    { import = 'reys.plugins.capslock' },
     ui = {
         icons = vim.g.have_nerd_font and {} or {
             cmd = '⌘',
