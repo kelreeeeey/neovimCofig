@@ -30,7 +30,8 @@ return { -- Highlight, edit, and navigate code
         'vimdoc',
         'zig',
         'elixir',
-        'c'
+        'c',
+        'go',
       },
 
       highlight = {

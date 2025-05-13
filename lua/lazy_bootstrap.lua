@@ -15,7 +15,7 @@ require('lazy').setup({
     -- { import = "reys.plugins.lualine" },
     -- { import = "reys.plugins.snake-nvim" },
 
-    -- { import = "reys.plugins.lspconfig" },
+    { import = "reys.plugins.lspconfig" },
     -- { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
 
