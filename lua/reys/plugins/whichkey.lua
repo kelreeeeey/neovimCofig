@@ -117,6 +117,7 @@ return {
                 j = { "<cmd>Gitsigns next_hunk<CR>", "next hunk" },
                 s = { "<cmd>Telescope git_status<CR>", "git status" },
                 t = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "toggle blame" },
+                g = { "<cmd>LazyGit<cr>", "LazyGit" }
             },
             h = {
                 name = "Hardtime",
