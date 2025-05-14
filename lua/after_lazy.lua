@@ -18,15 +18,15 @@ local default_theme = function ()
     end
 end
 
-function ToglleTransparentOff()
-  vim.cmd.TransparentDisable()
-  LineNumberColors()
-end
-function ToglleTransparent()
-  vim.cmd.TransparentToggle()
-  LineNumberColors()
-end
-vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
+-- function ToglleTransparentOff()
+--   vim.cmd.TransparentDisable()
+--   LineNumberColors()
+-- end
+-- function ToglleTransparent()
+--   vim.cmd.TransparentToggle()
+--   LineNumberColors()
+-- end
+-- vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
 
 function ToglleColorscheme()
     default_theme()
@@ -77,6 +77,6 @@ vim.diagnostic.config({
     virtual_text=false,
 
 })
-ToglleTransparentOff()
+-- ToglleTransparentOff()
 
 
