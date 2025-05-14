@@ -64,7 +64,6 @@ require('lazy').setup({
     { import = 'legacy.indent_line' },
     -- { import = 'legacy.debug' },
     { import = 'legacy.gitsigns' },
-    { import = 'legacy.lint' },
     { import = 'reys.plugins.capslock' },
     ui = {
         icons = vim.g.have_nerd_font and {} or {
