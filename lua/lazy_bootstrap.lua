@@ -10,12 +10,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     { import = "reys.plugins.colorschemes" },
-    { import = "reys.plugins.transparent" },
+    -- { import = "reys.plugins.transparent" },
     { import = "reys.plugins.lazy-git" },
     -- { import = "reys.plugins.lualine" },
     -- { import = "reys.plugins.snake-nvim" },
 
-    { import = "reys.plugins.lspconfig" },
+    -- { import = "reys.plugins.lspconfig" },
     -- { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
 
