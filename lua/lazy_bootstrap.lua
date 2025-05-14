@@ -53,7 +53,7 @@ require('lazy').setup({
     -- dev plugins
     { import = "reys.plugins.dev" },
 
-    { import = 'legacy.lint' },
+    -- { import = 'legacy.lint' },
     { import = 'legacy.indent_line' },
     -- { import = 'legacy.debug' },
     { import = 'legacy.gitsigns' },
