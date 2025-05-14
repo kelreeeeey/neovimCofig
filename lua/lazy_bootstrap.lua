@@ -10,7 +10,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     { import = "reys.plugins.colorschemes" },
-    -- { import = "reys.plugins.transparent" },
     { import = "reys.plugins.lazy-git" },
     -- { import = "reys.plugins.lualine" },
     -- { import = "reys.plugins.snake-nvim" },
@@ -19,7 +18,6 @@ require('lazy').setup({
     -- { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
 
-    -- { import = "reys.plugins.luasnip" },
     { import = "reys.plugins.nvim-cmp" },
     { import = "reys.plugins.tree-sitter-setup" },
     { import = "reys.plugins.tree-sitter-context" },
@@ -29,20 +27,15 @@ require('lazy').setup({
     -- { import = "reys.plugins.hardtime-neovim" },
 
     "alvan/vim-closetag",
-    "kiyoon/magick.nvim",
-    "MunifTanjim/nui.nvim",
 
     { import = "reys.plugins.whichpy" },
     { import = "reys.plugins.whichkey" },
 
     { import = "reys.plugins.obsidian" },
-    -- { import = "reys.plugins.render-markdown" },
     { import = "reys.plugins.markview" },
-    -- { import = "reys.plugins.markdown-preview" },
 
     -- { import = "reys.plugins.autocompletion" },
     { import = 'reys.plugins.autopairs' },
-    -- { import = 'legacy.autopairs' },
     { import = "reys.plugins.surround" },
 
     -- { import = "reys.plugins.noice" },
