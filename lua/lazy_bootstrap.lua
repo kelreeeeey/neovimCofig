@@ -24,6 +24,7 @@ require('lazy').setup({
     -- { import = "reys.plugins.vimtex" },
 
     { import = "reys.plugins.snippets" },
+    { import = "reys.plugins.dooing" },
     -- { import = "reys.plugins.hardtime-neovim" },
 
     "alvan/vim-closetag",
@@ -54,7 +55,7 @@ require('lazy').setup({
     { import = "reys.plugins.dev" },
 
     -- { import = 'legacy.lint' },
-    { import = 'legacy.indent_line' },
+    -- { import = 'legacy.indent_line' },
     -- { import = 'legacy.debug' },
     { import = 'legacy.gitsigns' },
     { import = 'reys.plugins.capslock' },
