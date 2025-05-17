@@ -23,7 +23,7 @@ require('lazy').setup({
     { import = "reys.plugins.tree-sitter-context" },
     -- { import = "reys.plugins.vimtex" },
 
-    { import = "reys.plugins.snippets" },
+    -- { import = "reys.plugins.snippets" },
     { import = "reys.plugins.dooing" },
     -- { import = "reys.plugins.hardtime-neovim" },
 

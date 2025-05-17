@@ -12,7 +12,9 @@ return {
         "petertriho/cmp-git",
         -- "f3fora/cmp-spell",
         -- "micangl/cmp-vimtex",
-        {'dcampos/cmp-snippy', lazy=true, event = { "InsertEnter", "CmdlineEnter" }}
+
+        -- {'dcampos/cmp-snippy', lazy=true, event = { "InsertEnter", "CmdlineEnter" }}
+
     },
     config = function()
         local cmp = require("cmp")
@@ -59,12 +61,12 @@ return {
 
           -- configure how nvim-cmp interacts
           -- with snippet engine
-          snippet = {
-            expand = function(args)
-                    require 'snippy'.expand_snippet(args.body)
-              -- luasnip.lsp_expand(args.body)
-            end,
-          },
+          -- snippet = {
+          --   expand = function(args)
+          --           require 'snippy'.expand_snippet(args.body)
+          --     -- luasnip.lsp_expand(args.body)
+          --   end,
+          -- },
 
           mapping = cmp.mapping.preset.insert({
             ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
@@ -109,7 +111,7 @@ return {
               vim_item.menu = ({
                 -- vimtex = vim_item.menu,
                 nvim_lsp = "[LSP]",
-                snippy = "[Snippet]",
+                -- snippy = "[Snippet]",
                 spell = "[Spell]",
                 buffer = "[Buffer]",
                 cmdline = "[CMD]",
@@ -124,7 +126,7 @@ return {
             { name = "nvim_lsp" },
 
             -- { name = "luasnip" },
-            { name = "snippy" },
+            -- { name = "snippy" },
 
             -- { name = "vimtex" },
 

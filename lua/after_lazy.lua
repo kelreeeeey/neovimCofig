@@ -5,7 +5,7 @@ local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
 end
 
-vim.cmd.colorscheme "ayu-dark"
+vim.cmd.colorscheme "256_noir"
 LineNumberColors()
 
 local default_theme = function ()
