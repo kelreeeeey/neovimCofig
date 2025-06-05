@@ -5,7 +5,7 @@ local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
 end
 
-vim.cmd.colorscheme "slate"
+vim.cmd.colorscheme "candle-grey-transparent"
 -- vim.cmd.colorscheme "256_noir"
 LineNumberColors()
 
@@ -19,15 +19,15 @@ local default_theme = function ()
     end
 end
 
--- function ToglleTransparentOff()
---   vim.cmd.TransparentDisable()
---   LineNumberColors()
--- end
--- function ToglleTransparent()
---   vim.cmd.TransparentToggle()
---   LineNumberColors()
--- end
--- vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
+function ToglleTransparentOff()
+  vim.cmd.TransparentDisable()
+  LineNumberColors()
+end
+function ToglleTransparent()
+  vim.cmd.TransparentToggle()
+  LineNumberColors()
+end
+vim.keymap.set('n', "<A-T>", "<CMD>lua ToglleTransparent()<CR>")
 
 function ToglleColorscheme()
     default_theme()
@@ -36,9 +36,11 @@ function ToglleColorscheme()
 end
 
 local themes = {
-    "ayu-dark",
-    "retrobox",
-    "shine",
+    "default",
+    "candle-grey",
+    "candle-grey-transparent",
+    -- "ayu-dark",
+    -- "retrobox",
 }
 
 local current_theme = 1  -- Start with first theme
