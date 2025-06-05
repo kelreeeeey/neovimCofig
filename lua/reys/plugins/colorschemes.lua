@@ -3,6 +3,9 @@ return {
         'andreasvc/vim-256noir',
         -- 'jaredgorski/fogbell.vim',
     },
+    {
+        'aditya-azad/candle-grey'
+    }
     -- {
     --     'Shatur/neovim-ayu',
     --     mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
