@@ -3,7 +3,8 @@ return {
   event='VeryLazy',
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
-    'nvim-tree/nvim-web-devicons'
+    -- 'nvim-tree/nvim-web-devicons'.
+    'echasnovski/mini.icons'
   },
   file_types = { 'markdown', 'vimwiki' },
   vim.treesitter.language.register('markdown',

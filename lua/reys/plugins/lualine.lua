@@ -1,9 +1,9 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  lazy = false,
-  priority = 1000,
-  config = function()
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "echasnovski/mini.icons" },
+    lazy = false,
+    priority = 1000,
+    config = function()
     require("lualine").setup({
       options = {
         theme = 'ayu',
@@ -25,5 +25,5 @@ return {
       },
       extensions = { "fugitive", "quickfix", "fzf", "lazy", "mason", "nvim-dap-ui", "oil", "trouble"},
     })
-  end,
+    end,
 }

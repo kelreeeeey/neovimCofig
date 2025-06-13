@@ -12,6 +12,7 @@ require('lazy').setup({
     { import = "reys.plugins.colorschemes" },
     { import = "reys.plugins.lazy-git" },
     { import = "reys.plugins.fzf-lua" },
+    { 'echasnovski/mini.icons', version = '*' },
     -- { import = "reys.plugins.lualine" },
     -- { import = "reys.plugins.snake-nvim" },
 
@@ -47,7 +48,7 @@ require('lazy').setup({
     -- { import = "reys.plugins.harpoon2" },
     -- { import = "reys.plugins.lsp_line" },
 
-    { import = "reys.plugins.persistence" },
+    -- { import = "reys.plugins.persistence" },
     { import = "reys.plugins.todo-folke" },
     -- { import = "plugins.tree-sitter-textobjects" },
     { import = "reys.plugins.smartcolumn" },
@@ -59,7 +60,7 @@ require('lazy').setup({
     -- { import = 'legacy.indent_line' },
     -- { import = 'legacy.debug' },
     { import = 'legacy.gitsigns' },
-    { import = 'reys.plugins.capslock' },
+    -- { import = 'reys.plugins.capslock' },
     ui = {
         icons = vim.g.have_nerd_font and {} or {
             cmd = '⌘',

@@ -5,7 +5,7 @@ return {
     event = { "BufReadPre", "BufNewFile", }, --- "VeryLazy" },
     -- lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
     -- init = function(plugin)
-    --     -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
+    --     -- perf: add nvim-treesitter queries to the rtp and it's custom query predicates early
     --     -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
     --     -- no longer trigger the **nvim-treesitter** module to be loaded in time.
     --     -- Luckily, the only things that those plugins need are the custom queries, which we make available
@@ -79,8 +79,7 @@ return {
                 disable = { "css", "cls" },
             },
 
-            -- autotag = { enable=false, },
-
+            autotag = { enable=false, },
             indent = { enable = true, disable = { 'ruby' } },
 
         })

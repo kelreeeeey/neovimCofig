@@ -5,7 +5,18 @@ return {
     },
     {
         'aditya-azad/candle-grey'
-    }
+    },
+    {
+        "mstcl/dmg",
+        lazy = false,
+        priority = 1000,
+        -- config = function()
+        --     vim.api.nvim_command("colorscheme lush")
+        -- end,
+    },
+    {
+        "bettervim/yugen.nvim",
+    },
     -- {
     --     'Shatur/neovim-ayu',
     --     mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
@@ -15,3 +26,4 @@ return {
     --     end
     -- },
 }
+

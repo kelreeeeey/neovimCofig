@@ -5,8 +5,11 @@ local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
 end
 
-vim.cmd.colorscheme "candle-grey-transparent"
+vim.cmd.colorscheme "hemisu"
+-- vim.cmd.colorscheme "yugen"
+-- vim.cmd.colorscheme "candle-grey-transparent"
 -- vim.cmd.colorscheme "256_noir"
+
 LineNumberColors()
 
 local default_theme = function ()
@@ -36,9 +39,11 @@ function ToglleColorscheme()
 end
 
 local themes = {
-    "default",
-    "candle-grey",
+    "sheodoxdark",
+    "yugen",
     "candle-grey-transparent",
+    "hemisu",
+    "dmg",
     -- "ayu-dark",
     -- "retrobox",
 }
@@ -81,5 +86,4 @@ vim.diagnostic.config({
 
 })
 -- ToglleTransparentOff()
-
 
