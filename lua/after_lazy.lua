@@ -5,7 +5,10 @@ local function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true })
 end
 
-vim.cmd.colorscheme "hemisu"
+vim.opt.background="dark"
+
+vim.cmd.colorscheme "ayu"
+-- vim.cmd.colorscheme "hemisu"
 -- vim.cmd.colorscheme "yugen"
 -- vim.cmd.colorscheme "candle-grey-transparent"
 -- vim.cmd.colorscheme "256_noir"
@@ -44,6 +47,7 @@ local themes = {
     "candle-grey-transparent",
     "hemisu",
     "dmg",
+    "ayu-dark"
     -- "ayu-dark",
     -- "retrobox",
 }

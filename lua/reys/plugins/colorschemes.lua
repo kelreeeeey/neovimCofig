@@ -16,7 +16,14 @@ return {
     },
     {
         "bettervim/yugen.nvim",
+        lazy = false,
+        priority = 1000,
     },
+    {
+        "ayu-theme/ayu-vim",
+        lazy = false,
+        priority = 1000,
+    }
     -- {
     --     'Shatur/neovim-ayu',
     --     mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.

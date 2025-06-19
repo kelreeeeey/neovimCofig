@@ -68,7 +68,7 @@ local filetype_config = {
     h = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
     zig = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
 
-    html = {tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
+    html = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="expr"},
     json = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
     yaml = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="syntax"},
 
@@ -76,6 +76,7 @@ local filetype_config = {
     exs = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
     elixir = { tabstop=2, shiftwidth=2, expandtab=true, smartindent=true, foldmethod="expr"},
     js = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"} ,
+    json = {tabstop=4, shiftwidth=4, expandtab=true, smartindent=false, foldmethod="expr"} ,
 
 }
 
