@@ -49,6 +49,7 @@ return {
               "bibtex",
               "odin",
               "vimdoc",
+              "typst",
               "awk",
               "elixir",
               "c",

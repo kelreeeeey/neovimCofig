@@ -187,6 +187,7 @@ return {
                 N = { "<cmd>ObsidianNew<CR>", "New Note" },
                 s = { "<cmd>ObsidianSearch<CR>", "Search Note" },
                 w = { "<cmd>ObsidianWorkspace<CR>", "Workspace" },
+                t = { "<cmd>ObsidianTemplate<CR>", "Template" },
             },
         },
     },

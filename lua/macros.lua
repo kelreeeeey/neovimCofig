@@ -113,13 +113,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
-local headpython = [[i#coding: utf-8 -*-
-"""Description
 
-Author: Kelrey
-Email: taufiqkelrey1@gmail.com
-Github: kelreeeey
-Description: description
+local headpython = [[i# coding: utf-8 -*-
+#:put =strftime('# Created at: %a %Y-%m-%d %H:%M:%S%z')o#
+# Author: Kelrey
+# Email: taufiqkelrey1@gmail.com
+# Github: kelreeeey
+"""Description
 """
 
 def main() -> int:
@@ -129,6 +129,19 @@ return 0
 if __name__ == '__main__':
 main()]]
 
+local marimo_sandbox = [[i# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "marimo==0.14.12",
+#     "altair==4.2.0",
+#     "matplotlib",
+#     "hvplot",
+#     "scipy",
+#     "numpy>=1.26.4",
+#     "polars>=0.20.31"
+# ]
+# ///]]
+
 vim.fn.setreg("f", ":r!echo %0i ")
 
 vim.api.nvim_create_augroup("PythonDev", { clear = true })
@@ -136,7 +149,12 @@ vim.api.nvim_create_autocmd("FileType", {
     group = "PythonDev",
     pattern = { "python", },
     callback = function()
-        vim.fn.setreg("d",  headpython .. esc .. "11kOFile:" .. esc .. "@f")
+        vim.fn.setreg("d",  headpython .. esc .. "11kO# File:" .. esc .. "@f")
         vim.fn.setreg("r",  ":!ruff format %" .. enter)
+        vim.fn.setreg("m",  marimo_sandbox .. esc)
     end
 })
+
+
+
+

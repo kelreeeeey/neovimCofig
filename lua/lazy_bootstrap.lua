@@ -12,6 +12,8 @@ require('lazy').setup({
     { import = "reys.plugins.colorschemes" },
     { import = "reys.plugins.lazy-git" },
     { import = "reys.plugins.fzf-lua" },
+    -- { import = "reys.plugins.markview" },
+    -- { import = "reys.plugins.markdown-preview" },
     { 'echasnovski/mini.icons', version = '*' },
     -- { import = "reys.plugins.lualine" },
     -- { import = "reys.plugins.snake-nvim" },
@@ -19,10 +21,12 @@ require('lazy').setup({
     -- { import = "reys.plugins.lspconfig" },
     -- { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
+    { import = "reys.plugins.flash"  },
 
     { import = "reys.plugins.nvim-cmp" },
     { import = "reys.plugins.tree-sitter-setup" },
     { import = "reys.plugins.tree-sitter-context" },
+    -- { import = "reys.plugins.typst-preview" },
     -- { import = "reys.plugins.vimtex" },
 
     -- { import = "reys.plugins.snippets" },
@@ -35,7 +39,6 @@ require('lazy').setup({
     { import = "reys.plugins.whichkey" },
 
     { import = "reys.plugins.obsidian" },
-    { import = "reys.plugins.markview" },
 
     -- { import = "reys.plugins.autocompletion" },
     { import = 'reys.plugins.autopairs' },
@@ -59,7 +62,7 @@ require('lazy').setup({
     -- { import = 'legacy.lint' },
     -- { import = 'legacy.indent_line' },
     -- { import = 'legacy.debug' },
-    { import = 'legacy.gitsigns' },
+    -- { import = 'legacy.gitsigns' },
     -- { import = 'reys.plugins.capslock' },
     ui = {
         icons = vim.g.have_nerd_font and {} or {

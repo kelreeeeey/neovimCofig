@@ -48,7 +48,7 @@ end
 local filetype_config = {
 
     md = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
-    markdown = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
+    markdown = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="manual"},
     mkd = { tabstop=4, shiftwidth=4, expandtab=false, smartindent=false, foldmethod="manual"},
 
     latex = { tabstop=4, shiftwidth=4, expandtab=true, smartindent=true, foldmethod="syntax"},

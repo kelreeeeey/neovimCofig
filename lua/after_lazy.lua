@@ -67,6 +67,7 @@ vim.keymap.set('n', '<leader>tc', cycle_theme, { desc = 'Cycle themes' })
 -- vim.keymap.set('n', "<A-C>", "<CMD>lua ToglleColorscheme()<CR>")
 vim.keymap.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
 vim.keymap.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
+vim.keymap.set('n', "<leader>dt", "<CMD>:put =strftime(' %a %Y-%m-%d %H:%M:%S%z')<CR>")
 
 -- insert mode deletion
 vim.keymap.set("n", "\\", "<CMD>Oil<CR>", { desc = "Open parent directory in floating window" })
