@@ -132,7 +132,7 @@ main()]]
 local marimo_sandbox = [[i# /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#     "marimo==0.14.12",
+#     "marimo==0.14.16",
 #     "altair==4.2.0",
 #     "matplotlib",
 #     "hvplot",
@@ -154,7 +154,3 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.fn.setreg("m",  marimo_sandbox .. esc)
     end
 })
-
-
-
-

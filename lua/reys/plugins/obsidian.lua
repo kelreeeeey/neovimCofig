@@ -67,9 +67,7 @@ return{
     -- event = { "VeryLazy" },
     lazy = true,
     ft = 'markdown',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
+    dependencies = { 'nvim-lua/plenary.nvim', },
     opts = {
       workspaces = workspace_path(),
 

@@ -1,6 +1,3 @@
-vim.opt.background="dark"
-
-vim.cmd.colorscheme "ayu"
 -- vim.cmd.colorscheme "hemisu"
 -- vim.cmd.colorscheme "yugen"
 -- vim.cmd.colorscheme "candle-grey-transparent"
