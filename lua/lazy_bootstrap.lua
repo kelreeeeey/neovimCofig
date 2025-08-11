@@ -22,6 +22,7 @@ require('lazy').setup({
     -- { import = "reys.plugins.lspconfig-languages" },
     { import = "reys.plugins.telescope"  },
     { import = "reys.plugins.flash"  },
+    -- { import = "reys.plugins.markview" },
 
     { import = "reys.plugins.nvim-cmp" },
     { import = "reys.plugins.tree-sitter-setup" },
