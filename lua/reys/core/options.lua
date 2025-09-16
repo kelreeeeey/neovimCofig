@@ -14,8 +14,8 @@ opt.relativenumber   = true
 opt.mouse            = 'nv' -- Mouse only in normal and viusual mode
 opt.showmode         = false
 
-op.tabstop           = 4 -- Number of spaces a tab represents
-op.shiftwidth        = 2 -- Number of spaces for each indentation
+op.tabstop           = 4    -- Number of spaces a tab represents
+op.shiftwidth        = 2    -- Number of spaces for each indentation
 op.expandtab         = true -- Convert tabs to spaces
 op.smartindent       = true -- Automatically indent new lines
 op.smarttab          = true -- Automatically indent new lines
@@ -24,8 +24,8 @@ opt.foldmethod       = "expr"
 opt.winborder        = "rounded"
 
 op.foldcolumn        = "auto" -- '0' is not bad
-op.foldlevel         = 49 -- Using ufo provider need a large value, feel free to decrease the value
-op.foldlevelstart    = 1 -- 99
+op.foldlevel         = 49     -- Using ufo provider need a large value, feel free to decrease the value
+op.foldlevelstart    = 1      -- 99
 op.foldenable        = true
 
 vim.schedule(function() opt.clipboard = 'unnamedplus' end)
@@ -105,3 +105,9 @@ map.set("n", "<S-A-k>", "50<C-w>+")
 --     underline=true,
 --     virtual_text=false,
 -- })
+
+if vim.g.neovide == true then
+  vim.api.nvim_set_keymap("n", "<C-9>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { silent = true })
+  vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { silent = true })
+  vim.api.nvim_set_keymap("n", "<C-1>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+end

@@ -571,7 +571,7 @@ require("mason").setup()
 --
 
 -- # LSP(?)
-vim.lsp.enable({ "lua_ls", "ruff", "python", "basedpyright" })
+vim.lsp.enable({ "lua_ls", "ruff", "python", "basedpyright", "julia-lsp", })
 
 vim.lsp.config("lua_ls", { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } })
 vim.lsp.config("python", {})

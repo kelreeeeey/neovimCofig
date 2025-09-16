@@ -5,7 +5,7 @@ local enter = vim.api.nvim_replace_termcodes( "<Enter>", true, true, true )
 vim.api.nvim_create_augroup("TextEditing", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     group = "TextEditing",
-    pattern = { "markdown", ".md", "latex", ".tex", ".bib", ".text", "plaintext" },
+    pattern = { "markdown", ".md", "latex", ".tex", ".bib", ".text", "plaintext", "python" },
     callback = function()
         vim.fn.setreg("j", "vipJVgq$")
     end
