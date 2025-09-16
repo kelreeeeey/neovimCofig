@@ -114,7 +114,7 @@ local filetype_config = {
     odin = {
         tabstop = 4,
         shiftwidth = 4,
-        expandtab = true,
+        expandtab = false,
         smartindent = true,
         foldmethod = "expr",
     },
