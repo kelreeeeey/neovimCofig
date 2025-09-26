@@ -117,7 +117,7 @@ vim.api.nvim_create_autocmd("FileType", {
 local headpython = [[i# coding: utf-8 -*-
 #:put =strftime('# Created at: %a %Y-%m-%d %H:%M:%S%z')o#
 # Author: Kelrey
-# Email: taufiqkelrey1@gmail.com
+# Email: taufiq.kelrey1@gmail.com
 # Github: kelreeeey
 """Description
 """
