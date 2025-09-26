@@ -2,14 +2,12 @@ local keymap = vim.keymap
 --
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
-    { src = "https://github.com/windwp/nvim-autopairs" },
-    {
-        src = "https://github.com/kylechui/nvim-surround",
-        version = "v3.1.3"
-    },
-    { src = "https://github.com/epwalsh/obsidian.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/ibhagwan/fzf-lua" },
+    { src = "https://github.com/nvim-telescope/telescope.nvim" },
+    { src = "https://github.com/windwp/nvim-autopairs" },
+    { src = "https://github.com/kylechui/nvim-surround",                  version = "v3.1.3" },
+    { src = "https://github.com/epwalsh/obsidian.nvim" },
     { src = "https://github.com/hrsh7th/nvim-cmp" },
     { src = "https://github.com/neovim/nvim-lspconfig", },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", },
@@ -97,6 +95,34 @@ keymap.set("n", "|", "<CMD>Oil<CR>", { desc = "Open parent directory in floating
 keymap.set("n", "\\", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 --
 
+-- # Telescope
+
+require("telescope").setup({
+    defaults = {
+        layout_config = {
+          vertical = { width = 0.5 }
+          -- other layout configuration here
+        },
+    },
+    pickers = {
+        find_files = { theme = "dropdown", },
+        -- live_grep = { theme = "dropdown", },
+        -- grep_string = { theme = "get_cursor" },
+        buffers = { theme = "dropdown", },
+        tags = { theme = "dropdown", },
+    },
+})
+local builtin = require('telescope.builtin')
+local tl_themese = require('telescope.themes')
+
+keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+keymap.set('n', '<leader>fff', builtin.grep_string, { desc = 'Telescope Grep string' })
+keymap.set('n', "<leader><leader>", builtin.buffers, { desc = 'Telescope buffers' })
+keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+keymap.set('n', '<leader>ft', builtin.tags, { desc = 'Telescope Tags' })
+keymap.set('n', '<leader>fq', builtin.quickfix, { desc = 'Telescope Quickfix' })
+
 -- # FzfLua
 
 require("fzf-lua").setup({
@@ -130,14 +156,16 @@ actions = {
         ["alt-f"]  = actions.toggle_follow,
     },
 }
-keymap.set("n", "<leader>f", "<CMD>FzfLua<CR>", { desc = "FzfLua" })
-keymap.set("n", "<leader>fn", "<CMD>FzfLua files cwd=~/AppData/Local/nvim<CR>",
-    { desc = "FzfLua files in nvim directory" })
-keymap.set("n", "<leader>ff", "<CMD>FzfLua files<CR>", { desc = "FzfLua files" })
-keymap.set("n", "<leader>fg", "<CMD>FzfLua grep<CR>", { desc = "FzfLua grep" })
-keymap.set("n", "<leader>fgc", "<CMD>FzfLua grep_cword<CR>", { desc = "FzfLua grep_cword" })
--- map.set("n", "<leader>fg<S-C>", "<cMD>FzfLua grep_Cword<CR>", { desc = "FzfLua grep_Cword" })
-keymap.set("n", "<leader><leader>", "<CMD>FzfLua buffers<CR>", { desc = "FzfLua buffers" })
+
+-- keymap.set("n", "<leader>f", "<CMD>FzfLua<CR>", { desc = "FzfLua" })
+-- keymap.set("n", "<leader>fn", "<CMD>FzfLua files cwd=~/AppData/Local/nvim<CR>",
+--     { desc = "FzfLua files in nvim directory" })
+-- keymap.set("n", "<leader>ff", "<CMD>FzfLua files<CR>", { desc = "FzfLua files" })
+-- keymap.set("n", "<leader>fg", "<CMD>FzfLua grep<CR>", { desc = "FzfLua grep" })
+-- keymap.set("n", "<leader>fgc", "<CMD>FzfLua grep_cword<CR>", { desc = "FzfLua grep_cword" })
+-- -- map.set("n", "<leader>fg<S-C>", "<cMD>FzfLua grep_Cword<CR>", { desc = "FzfLua grep_Cword" })
+-- keymap.set("n", "<leader><leader>", "<CMD>FzfLua buffers<CR>", { desc = "FzfLua buffers" })
+
 --
 
 -- # Surround and autopair
@@ -627,4 +655,3 @@ keymap.set("n", "<leader>ggf", "<CMD>LazyGitFilter<CR>", { desc = "LazyGitFilter
 -- # fff.nvim
 -- require("fff").setup({
 -- })
-
