@@ -121,44 +121,47 @@ keymap.set('n', '<leader>fq', builtin.quickfix, { desc = 'Telescope Quickfix' })
 -- # FzfLua
 
 -- require("fzf").setup({ 'fzf-native' })
-require("fzf-lua").setup({
-    'fzf-native',
-    winopts = { preview = { default = "builtin" } },
-    help_open_win = function(buf, enter, opts)
-        opts.border = 'single'
-        opts.row = 0
-        opts.col = 0
-        return vim.api.nvim_open_win(buf, enter, opts)
-    end,
-})
-local actions = require("fzf-lua").actions
-actions = {
-    files = {
-        true, -- uncomment to inherit all the below in your custom config
-        -- Pickers inheriting these actions:
-        --   files, git_files, git_status, grep, lsp, oldfiles, quickfix, loclist,
-        --   tags, btags, args, buffers, tabs, lines, blines
-        -- `file_edit_or_qf` opens a single selection or sends multiple selection to quickfix
-        -- replace `enter` with `file_edit` to open all files/bufs whether single or multiple
-        -- replace `enter` with `file_switch_or_edit` to attempt a switch in current tab first
-        ["enter"]  = actions.file_edit_or_qf,
-        ["ctrl-s"] = actions.file_split,
-        ["ctrl-v"] = actions.file_vsplit,
-        ["ctrl-t"] = actions.file_tabedit,
-        ["alt-q"]  = actions.file_sel_to_qf,
-        ["alt-Q"]  = actions.file_sel_to_ll,
-        ["alt-i"]  = actions.toggle_ignore,
-        ["alt-h"]  = actions.toggle_hidden,
-        ["alt-f"]  = actions.toggle_follow,
-    },
-}
-keymap.set("n", "<leader>f", "<CMD>FzfLua<CR>", { desc = "FzfLua" })
-keymap.set("n", "<leader>fn", "<CMD>FzfLua files cwd=~/AppData/Local/nvim<CR>", { desc = "FzfLua files in nvim directory" })
-keymap.set("n", "<leader>ff", "<CMD>FzfLua files<CR>", { desc = "FzfLua files",  })
-keymap.set("n", "<leader>fg", "<CMD>FzfLua grep<CR>", { desc = "FzfLua grep" })
-keymap.set("n", "<leader>fgc", "<CMD>FzfLua grep_cword<CR>", { desc = "FzfLua grep_cword" })
--- map.set("n", "<leader>fg<S-C>", "<cMD>FzfLua grep_Cword<CR>", { desc = "FzfLua grep_Cword" })
-keymap.set("n", "<leader><leader>", "<CMD>FzfLua buffers<CR>", { desc = "FzfLua buffers" })
+
+-- require("fzf-lua").setup({
+--     'fzf-native',
+--     winopts = { preview = { default = "builtin" } },
+--     help_open_win = function(buf, enter, opts)
+--         opts.border = 'single'
+--         opts.row = 0
+--         opts.col = 0
+--         return vim.api.nvim_open_win(buf, enter, opts)
+--     end,
+-- })
+-- local actions = require("fzf-lua").actions
+-- actions = {
+--     files = {
+--         true, -- uncomment to inherit all the below in your custom config
+--         -- Pickers inheriting these actions:
+--         --   files, git_files, git_status, grep, lsp, oldfiles, quickfix, loclist,
+--         --   tags, btags, args, buffers, tabs, lines, blines
+--         -- `file_edit_or_qf` opens a single selection or sends multiple selection to quickfix
+--         -- replace `enter` with `file_edit` to open all files/bufs whether single or multiple
+--         -- replace `enter` with `file_switch_or_edit` to attempt a switch in current tab first
+--         ["enter"]  = actions.file_edit_or_qf,
+--         ["ctrl-s"] = actions.file_split,
+--         ["ctrl-v"] = actions.file_vsplit,
+--         ["ctrl-t"] = actions.file_tabedit,
+--         ["alt-q"]  = actions.file_sel_to_qf,
+--         ["alt-Q"]  = actions.file_sel_to_ll,
+--         ["alt-i"]  = actions.toggle_ignore,
+--         ["alt-h"]  = actions.toggle_hidden,
+--         ["alt-f"]  = actions.toggle_follow,
+--     },
+-- }
+
+-- keymap.set("n", "<leader>f", "<CMD>FzfLua<CR>", { desc = "FzfLua" })
+-- keymap.set("n", "<leader>fn", "<CMD>FzfLua files cwd=~/AppData/Local/nvim<CR>", { desc = "FzfLua files in nvim directory" })
+-- keymap.set("n", "<leader>ff", "<CMD>FzfLua files<CR>", { desc = "FzfLua files",  })
+-- keymap.set("n", "<leader>fg", "<CMD>FzfLua grep<CR>", { desc = "FzfLua grep" })
+-- keymap.set("n", "<leader>fgc", "<CMD>FzfLua grep_cword<CR>", { desc = "FzfLua grep_cword" })
+-- -- map.set("n", "<leader>fg<S-C>", "<cMD>FzfLua grep_Cword<CR>", { desc = "FzfLua grep_Cword" })
+-- keymap.set("n", "<leader><leader>", "<CMD>FzfLua buffers<CR>", { desc = "FzfLua buffers" })
+
 --
 
 -- # Surround and autopair
