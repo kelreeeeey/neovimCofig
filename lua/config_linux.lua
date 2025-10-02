@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
+    -- { src = "https://github.com/ibhagwan/fzf-lua" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/kylechui/nvim-surround", version = "v3.1.3" },
