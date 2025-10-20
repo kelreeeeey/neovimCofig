@@ -1,5 +1,4 @@
 local keymap = vim.keymap
---
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -16,15 +15,6 @@ vim.pack.add({
 })
 
 require("macros")
-
-function LineNumberColors()
-    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
-end
-
-    -- { src = "https://github.com/neovim/nvim-lspconfig", },
-LineNumberColors()
 --
 
 -- # Oil
@@ -104,10 +94,7 @@ require("telescope").setup({
     },
     pickers = {
         find_files = { theme = "dropdown", },
-        -- live_grep = { theme = "dropdown", },
-        -- grep_string = { theme = "get_cursor" },
         buffers = { theme = "dropdown", },
-        tags = { theme = "dropdown", },
     },
 })
 local builtin = require('telescope.builtin')
@@ -374,9 +361,11 @@ local function exists(file)
     end
     return ok, err
 end
+
 local function isdir(path)
     return exists(path .. "/")
 end
+
 local function workspace_path()
     if isdir("C:\\Users\\Lenovo\\obsidian_vault") then
         -- print("You're in your home")
@@ -447,7 +436,7 @@ require("obsidian").setup({
     sort_reversed = true,
     search_max_lines = 250,
     picker = {
-        name = 'fzf-lua',
+        name = 'telescope',
         note_mappings = {
             new = '<C-x>',
             insert_link = '<C-l>',
@@ -553,41 +542,12 @@ require("mason").setup()
 --
 
 -- # LSP(?)
-vim.lsp.enable({
-    "lua_ls",
-    -- "ruff",
-    -- "basedpyright",
-    -- "ols"
-})
-
+vim.lsp.enable({ "lua_ls", })
 vim.lsp.config("lua_ls", { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } })
 keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "LSP format Lua" })
 --
 
--- -- # Flash
--- require("flash").setup({
---     event = "VeryLazy",
---     opts = {
---         modes = {
---             search = { enabled = true },
---             char = { jump_labels = true, },
---         },
---     },
---     -- stylua: ignore
---     keys = {
---         { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
---         { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
---         { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
---         { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
---         { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
---     },
---
--- })
--- --
-
-require("smartcolumn").setup({
-    disabled_filetypes = { "help", "text" }
-})
+require("smartcolumn").setup({ disabled_filetypes = { "help", "text" } })
 
 require("lazygit")
 keymap.set("n", "<leader>gg", "<CMD>LazyGit<CR>", { desc = "LazyGit" })

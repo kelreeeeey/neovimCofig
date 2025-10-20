@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/kylechui/nvim-surround", version = "v3.1.3" },
@@ -9,18 +10,10 @@ vim.pack.add({
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter-context", },
     { src = "https://github.com/m4xshen/smartcolumn.nvim", },
+    { src = "https://github.com/kdheepak/lazygit.nvim", },
 })
 
 require("macros")
-
-function LineNumberColors()
-    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
-end
-
-LineNumberColors()
---
 
 -- # Oil
 require("oil").setup({
@@ -99,10 +92,7 @@ require("telescope").setup({
     },
     pickers = {
         find_files = { theme = "dropdown", },
-        -- live_grep = { theme = "dropdown", },
-        -- grep_string = { theme = "get_cursor" },
         buffers = { theme = "dropdown", },
-        tags = { theme = "dropdown", },
     },
 })
 local builtin = require('telescope.builtin')
@@ -357,7 +347,17 @@ require("cmp").setup({
 })
 --
 
+require('treesitter-context').setup {
+    enable = true,
+    multiline_threshold = 5,
+    max_lines = 2,
+}
 require("smartcolumn").setup({
     disabled_filetypes = { "help", "text" }
 })
+
+require("lazygit")
+keymap.set("n", "<leader>gg", "<CMD>LazyGit<CR>", { desc = "LazyGit" })
+keymap.set("n", "<leader>ggc", "<CMD>LazyGitCurrentFile<CR>", { desc = "LazyGitCurrentFile" })
+keymap.set("n", "<leader>ggf", "<CMD>LazyGitFilter<CR>", { desc = "LazyGitFilter" })
 

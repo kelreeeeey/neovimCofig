@@ -9,10 +9,17 @@ vim.pack.add({
     { src = "https://github.com/CantoroMC/ayu-nvim" },
 })
 vim.cmd.colorscheme "ayu"
-vim.g.ayu_mirage = true
-vim.g.ayu_avoid_italics = false
+vim.g.ayu_mirage = false
 vim.g.guifont = "IosevkaTerm Nerd Font Mono"
+vim.g.ayu_avoid_italics = true
 --
+
+local function LineNumberColors()
+    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
+    vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
+    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
+end
+LineNumberColors()
 
 --
 if vim.loop.os_uname().sysname == "Linux" then
