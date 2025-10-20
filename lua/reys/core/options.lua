@@ -100,14 +100,15 @@ map.set("n", "<S-A-h>", "50<C-w><")
 map.set("n", "<S-A-l>", "50<C-w>>")
 map.set("n", "<S-A-j>", "50<C-w>-")
 map.set("n", "<S-A-k>", "50<C-w>+")
--- vim.diagnostic.config({
---     virtual_lines=true,
---     underline=true,
---     virtual_text=false,
--- })
+vim.diagnostic.config({
+    virtual_lines=true,
+    underline=true,
+    virtual_text=false,
+})
 
 if vim.g.neovide == true then
-  vim.api.nvim_set_keymap("n", "<C-9>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { silent = true })
-  vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { silent = true })
-  vim.api.nvim_set_keymap("n", "<C-1>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+    vim.api.nvim_set_keymap("n", "<C-9>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { silent = true })
+    vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { silent = true })
+    vim.api.nvim_set_keymap("n", "<C-1>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+    vim.g.guifont = "IosevkaTerm Nerd Font Mono"
 end
