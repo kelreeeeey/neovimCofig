@@ -3,16 +3,13 @@ local keymap = vim.keymap
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/ibhagwan/fzf-lua" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/kylechui/nvim-surround",                  version = "v3.1.3" },
     { src = "https://github.com/epwalsh/obsidian.nvim" },
     { src = "https://github.com/hrsh7th/nvim-cmp" },
-    { src = "https://github.com/neovim/nvim-lspconfig", },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter-context", },
-    { src = "https://github.com/folke/flash.nvim", },
     { src = "https://github.com/mason-org/mason.nvim", },
     { src = "https://github.com/m4xshen/smartcolumn.nvim", },
     { src = "https://github.com/kdheepak/lazygit.nvim", },
@@ -26,6 +23,7 @@ function LineNumberColors()
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
 end
 
+    -- { src = "https://github.com/neovim/nvim-lspconfig", },
 LineNumberColors()
 --
 
@@ -122,51 +120,6 @@ keymap.set('n', "<leader><leader>", builtin.buffers, { desc = 'Telescope buffers
 keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 keymap.set('n', '<leader>ft', builtin.tags, { desc = 'Telescope Tags' })
 keymap.set('n', '<leader>fq', builtin.quickfix, { desc = 'Telescope Quickfix' })
-
--- # FzfLua
-
-require("fzf-lua").setup({
-    'fzf-native',
-    winopts = { preview = { default = "builtin" } },
-    help_open_win = function(buf, enter, opts)
-        opts.border = 'single'
-        opts.row = 0
-        opts.col = 0
-        return vim.api.nvim_open_win(buf, enter, opts)
-    end,
-})
-local actions = require("fzf-lua").actions
-actions = {
-    files = {
-        true, -- uncomment to inherit all the below in your custom config
-        -- Pickers inheriting these actions:
-        --   files, git_files, git_status, grep, lsp, oldfiles, quickfix, loclist,
-        --   tags, btags, args, buffers, tabs, lines, blines
-        -- `file_edit_or_qf` opens a single selection or sends multiple selection to quickfix
-        -- replace `enter` with `file_edit` to open all files/bufs whether single or multiple
-        -- replace `enter` with `file_switch_or_edit` to attempt a switch in current tab first
-        ["enter"]  = actions.file_edit_or_qf,
-        ["ctrl-s"] = actions.file_split,
-        ["ctrl-v"] = actions.file_vsplit,
-        ["ctrl-t"] = actions.file_tabedit,
-        ["alt-q"]  = actions.file_sel_to_qf,
-        ["alt-Q"]  = actions.file_sel_to_ll,
-        ["alt-i"]  = actions.toggle_ignore,
-        ["alt-h"]  = actions.toggle_hidden,
-        ["alt-f"]  = actions.toggle_follow,
-    },
-}
-
--- keymap.set("n", "<leader>f", "<CMD>FzfLua<CR>", { desc = "FzfLua" })
--- keymap.set("n", "<leader>fn", "<CMD>FzfLua files cwd=~/AppData/Local/nvim<CR>",
---     { desc = "FzfLua files in nvim directory" })
--- keymap.set("n", "<leader>ff", "<CMD>FzfLua files<CR>", { desc = "FzfLua files" })
--- keymap.set("n", "<leader>fg", "<CMD>FzfLua grep<CR>", { desc = "FzfLua grep" })
--- keymap.set("n", "<leader>fgc", "<CMD>FzfLua grep_cword<CR>", { desc = "FzfLua grep_cword" })
--- -- map.set("n", "<leader>fg<S-C>", "<cMD>FzfLua grep_Cword<CR>", { desc = "FzfLua grep_Cword" })
--- keymap.set("n", "<leader><leader>", "<CMD>FzfLua buffers<CR>", { desc = "FzfLua buffers" })
-
---
 
 -- # Surround and autopair
 require("nvim-surround").setup({
@@ -426,7 +379,7 @@ local function isdir(path)
 end
 local function workspace_path()
     if isdir("C:\\Users\\Lenovo\\obsidian_vault") then
-        print("You're in your home")
+        -- print("You're in your home")
         return {
             {
                 name = 'Kelrey\'s',
@@ -441,7 +394,7 @@ local function workspace_path()
             },
         }
     else
-        print("You're in Geosiesmal's house")
+        -- print("You're in Geosiesmal's house")
         return {
             {
                 name = 'Kelreys on Lediapad',
@@ -470,6 +423,7 @@ local function workspace_path()
         }
     end
 end
+
 require("obsidian").setup({
     lazy = true,
     ft = 'markdown',
@@ -599,49 +553,37 @@ require("mason").setup()
 --
 
 -- # LSP(?)
-vim.lsp.enable({ "lua_ls", "ruff", "python", "basedpyright", "ols", })
-
-vim.lsp.config("lua_ls", { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } })
-vim.lsp.config("python", {})
-vim.lsp.config("ols", {})
-vim.lsp.config("ruff", {})
-vim.lsp.config("mypy", {})
-vim.lsp.config("basedpyright", {
-    settings = {
-        basedpyright = {
-            analysis = {
-                diagnosticMode = "openFilesOnly",
-                inlayHints = {
-                    callArgumentNames = true
-                }
-            }
-        }
-    }
+vim.lsp.enable({
+    "lua_ls",
+    -- "ruff",
+    -- "basedpyright",
+    -- "ols"
 })
 
+vim.lsp.config("lua_ls", { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } })
 keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "LSP format Lua" })
 --
 
--- # Flash
-require("flash").setup({
-    event = "VeryLazy",
-    opts = {
-        modes = {
-            search = { enabled = true },
-            char = { jump_labels = true, },
-        },
-    },
-    -- stylua: ignore
-    keys = {
-        { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-        { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-        { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-        { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-        { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
-
-})
+-- -- # Flash
+-- require("flash").setup({
+--     event = "VeryLazy",
+--     opts = {
+--         modes = {
+--             search = { enabled = true },
+--             char = { jump_labels = true, },
+--         },
+--     },
+--     -- stylua: ignore
+--     keys = {
+--         { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+--         { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+--         { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+--         { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+--         { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+--     },
 --
+-- })
+-- --
 
 require("smartcolumn").setup({
     disabled_filetypes = { "help", "text" }

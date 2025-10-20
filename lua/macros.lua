@@ -129,6 +129,12 @@ return 0
 if __name__ == '__main__':
 main()]]
 
+local headpythondoc = [[i# coding: utf-8 -*-
+#:put =strftime('# Created at: %a %Y-%m-%d %H:%M:%S%z')o#
+# Author: Kelrey
+# Email: taufiq.kelrey1@gmail.com
+# Github: kelreeeey]]
+
 local marimo_sandbox = [[i# /// script
 # requires-python = ">=3.10"
 # dependencies = [
@@ -150,6 +156,7 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = { "python", },
     callback = function()
         vim.fn.setreg("d",  headpython .. esc .. "11kO# File:" .. esc .. "@f")
+        vim.fn.setreg("c",  headpythondoc .. esc .. "2kO# File:" .. esc .. "@f")
         vim.fn.setreg("r",  ":!ruff format %" .. enter)
         vim.fn.setreg("m",  marimo_sandbox .. esc)
     end
