@@ -7,11 +7,45 @@ keymap.set("n", "<leader><leader>x", "<CMD>luafile %<CR>", { desc = "execute thi
 vim.pack.add({
     -- { src = "https://github.com/ayu-theme/ayu-vim" },
     { src = "https://github.com/CantoroMC/ayu-nvim" },
+    { src = 'https://github.com/nyngwang/nvimgelion', },
+    { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 })
-vim.cmd.colorscheme "ayu"
-vim.g.ayu_mirage = false
+
+-- vim.cmd.colorscheme "zaibatsu"
+vim.cmd.colorscheme "nvimgelion"
+-- vim.cmd.colorscheme "ayu"
+-- vim.g.ayu_mirage = false
+
 vim.g.guifont = "IosevkaTerm Nerd Font Mono"
 vim.g.ayu_avoid_italics = true
+vim.g.termguicolor = true
+--
+
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
+
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
+
+require("ibl").setup { indent = { highlight = highlight } }
+
 --
 
 local function LineNumberColors()
@@ -56,7 +90,13 @@ local set_opt_local = function(fileconfigs)
         vim.opt_local.expandtab = fileconfigs.expandtab     -- Convert tabs to spaces
         vim.opt_local.smartindent = fileconfigs.smartindent -- Automatically indent new lines
         foldmethod_guards(fileconfigs.foldmethod)
+        if fileconfigs.theme ~= nil then
+            vim.cmd.colorscheme = fileconfigs.theme
+        else
+            vim.cmd.colorscheme = "nvimgelion"
+        end
     end
+
 end
 
 local filetype_config = {
@@ -115,6 +155,7 @@ local filetype_config = {
         expandtab = true,
         smartindent = true,
         foldmethod = "expr",
+        theme = "ayu",
     },
     py = {
         tabstop = 4,
@@ -122,6 +163,7 @@ local filetype_config = {
         expandtab = true,
         smartindent = true,
         foldmethod = "expr",
+        theme = "ayu",
     },
     odin = {
         tabstop = 4,
@@ -129,6 +171,7 @@ local filetype_config = {
         expandtab = false,
         smartindent = true,
         foldmethod = "syntax",
+        theme = "zaibatsu",
     },
     sh = {
         tabstop = 4,
