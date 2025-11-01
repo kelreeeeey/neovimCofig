@@ -39,7 +39,7 @@ opt.undofile = true
 opt.ignorecase = true
 opt.smartcase = true
 
-opt.signcolumn = 'yes'
+opt.signcolumn = 'no'
 
 opt.updatetime = 250
 opt.timeoutlen = 350

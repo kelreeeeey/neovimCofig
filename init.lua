@@ -9,14 +9,17 @@ vim.pack.add({
     { src = "https://github.com/CantoroMC/ayu-nvim" },
     { src = 'https://github.com/nyngwang/nvimgelion', },
     { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
+    { src = "https://github.com/folke/which-key.nvim" },
 })
 
 -- vim.cmd.colorscheme "zaibatsu"
-vim.cmd.colorscheme "nvimgelion"
--- vim.cmd.colorscheme "ayu"
+-- vim.cmd.colorscheme "hemisu"
+-- vim.cmd.colorscheme "nvimgelion"
+vim.cmd.colorscheme "ayu"
 -- vim.g.ayu_mirage = false
 
-vim.g.guifont = "IosevkaTerm Nerd Font Mono"
+vim.opt.foldcolumn = "0"
+vim.g.guifont = "IosevkaTerm Nerd Font"
 vim.g.ayu_avoid_italics = true
 vim.g.termguicolor = true
 --
@@ -35,23 +38,25 @@ local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75", blend=10, })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B", blend=10, })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF", blend=10, })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66", blend=10, })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379", blend=10, })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD", blend=10, })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2", blend=10, })
 end)
 
 require("ibl").setup { indent = { highlight = highlight } }
 
 --
 
+-- vim.cmd.highlight.guibg=NONE
 local function LineNumberColors()
-    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
+    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = 'grey', bold = false })
+    vim.api.nvim_set_hl(0, 'LineNr',      { fg = 'NONE',  bold = false })
+    vim.api.nvim_set_hl(0, 'CursorLine',  { bg = 'NONE', underline=true, sp='red'  })
+    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = 'grey', bold = false })
 end
 LineNumberColors()
 
@@ -264,6 +269,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
     callback = function(event)
         set_opt_local(filetype_config[vim.bo.filetype])
     end,
+})
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    -- group = vim.api.nvim_create_augroup('FormatBuffer', { clear = true }),
+    callback = LineNumberColors,
 })
 
 -- require("local_options")

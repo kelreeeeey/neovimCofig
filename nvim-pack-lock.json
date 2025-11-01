@@ -22,6 +22,10 @@
     "oil.nvim": [],
     "plenary.nvim": [],
     "smartcolumn.nvim": [],
-    "telescope.nvim": []
+    "telescope.nvim": [],
+    "which-key.nvim": {
+      "rev": "b4177e3",
+      "src": "https://github.com/folke/which-key.nvim"
+    }
   }
 }
