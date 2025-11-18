@@ -248,12 +248,19 @@ local filetype_config = {
         smartindent = true,
         foldmethod = "expr",
     },
-    js = {
+    javascript = {
         tabstop = 4,
         shiftwidth = 4,
         expandtab = true,
         smartindent = true,
-        foldmethod = "syntax",
+        foldmethod = "expr",
+    },
+    javascriptreact = {
+        tabstop = 4,
+        shiftwidth = 4,
+        expandtab = true,
+        smartindent = true,
+        foldmethod = "expr",
     },
     json = {
         tabstop = 4,
@@ -268,6 +275,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     group = vim.api.nvim_create_augroup('FormatBuffer', { clear = true }),
     callback = function(event)
         set_opt_local(filetype_config[vim.bo.filetype])
+        -- vim.print(vim.bo.filetype)
     end,
 })
 
