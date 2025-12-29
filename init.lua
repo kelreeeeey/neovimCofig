@@ -5,8 +5,8 @@ keymap.set("n", "<leader><leader>x", "<CMD>luafile %<CR>", { desc = "execute thi
 
 --
 vim.pack.add({
-    -- { src = "https://github.com/ayu-theme/ayu-vim" },
-    { src = "https://github.com/CantoroMC/ayu-nvim" },
+    { src = "https://github.com/Shatur/neovim-ayu" },
+    { src = "https://github.com/norcalli/nvim-colorizer.lua" },
     { src = 'https://github.com/nyngwang/nvimgelion', },
     { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
     { src = "https://github.com/folke/which-key.nvim" },
@@ -15,30 +15,35 @@ vim.pack.add({
 -- vim.cmd.colorscheme "zaibatsu"
 -- vim.cmd.colorscheme "hemisu"
 -- vim.cmd.colorscheme "nvimgelion"
-vim.cmd.colorscheme "ayu"
--- vim.g.ayu_mirage = false
+require('ayu').setup({
+    mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+    terminal = true, -- Set to `false` to let terminal manage its own colors.
+    overrides = {
+        Normal = { bg = "#000C1A" },
+        NormalFloat = { bg = "#000C1A" },
+        ColorColumn = { bg = "#000C1A" },
+        SignColumn = { bg = "#000C1A" },
+        Folded = { bg = "#000C1A" },
+        FoldColumn = { bg = "#000C1A" },
+        CursorLine = { bg = "#000C1A" },
+        CursorColumn = { bg = "#000C1A" },
+        VertSplit = { bg = "#000C1A" },
+    },
+})
 
-vim.opt.foldcolumn = "0"
+vim.cmd("colorscheme ayu-dark")
 vim.g.guifont = "IosevkaTerm Nerd Font"
 vim.g.ayu_avoid_italics = true
-vim.g.termguicolor = true
+vim.g.termguicolor = false
 --
 
-local highlight = {
-    "RainbowRed",
-    "RainbowYellow",
-    "RainbowBlue",
-    "RainbowOrange",
-    "RainbowGreen",
-    "RainbowViolet",
-    "RainbowCyan",
-}
+require('colorizer').setup({ '*' })
 
 local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75", blend=10, })
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C78", blend=10, })
     vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B", blend=10, })
     vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF", blend=10, })
     vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66", blend=10, })
@@ -47,6 +52,7 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
     vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2", blend=10, })
 end)
 
+local highlight = { "RainbowRed", "RainbowYellow", "RainbowBlue", "RainbowOrange", "RainbowGreen", "RainbowViolet", "RainbowCyan", }
 require("ibl").setup { indent = { highlight = highlight } }
 
 --
@@ -227,27 +233,6 @@ local filetype_config = {
         smartindent = true,
         foldmethod = "syntax",
     },
-    ex = {
-        tabstop = 2,
-        shiftwidth = 2,
-        expandtab = true,
-        smartindent = true,
-        foldmethod = "expr",
-    },
-    exs = {
-        tabstop = 2,
-        shiftwidth = 2,
-        expandtab = true,
-        smartindent = true,
-        foldmethod = "expr",
-    },
-    elixir = {
-        tabstop = 2,
-        shiftwidth = 2,
-        expandtab = true,
-        smartindent = true,
-        foldmethod = "expr",
-    },
     javascript = {
         tabstop = 4,
         shiftwidth = 4,
@@ -279,9 +264,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+
 vim.api.nvim_create_autocmd("ColorScheme", {
     -- group = vim.api.nvim_create_augroup('FormatBuffer', { clear = true }),
     callback = LineNumberColors,
 })
 
--- require("local_options")

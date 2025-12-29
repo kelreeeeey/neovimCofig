@@ -33,7 +33,10 @@ vim.schedule(function() opt.clipboard = 'unnamedplus' end)
 opt.background = "dark"
 opt.breakindent = true
 opt.autoindent = true
-opt.wrap = false
+opt.wrap = true
+opt.linebreak = true
+opt.formatoptions = "tcqjw"
+opt.tw = 100
 opt.expandtab = true
 opt.undofile = true
 opt.ignorecase = true
@@ -106,9 +109,34 @@ vim.diagnostic.config({
     virtual_text=false,
 })
 
+vim.o.shell = "bash"
+vim.o.shellcmdflag = "-c"
+local mappings = {
+    { 'n', '<c-c>', '"+y' },
+    { 'v', '<c-c>', '"+y' },
+    { 'n', '<c-v>', '"+p' },
+    { 'i', '<c-v>', '<c-r>+' },
+    { 'c', '<c-v>', '<c-r>+' },
+    { 'i', '<c-r>', '<c-v>' },
+    { "n", "<c-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.05<CR>", },
+    { "n", "<c-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.05<CR>", },
+}
+
 if vim.g.neovide == true then
-    vim.api.nvim_set_keymap("n", "<C-9>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { silent = true })
-    vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { silent = true })
+    for _, map in ipairs(mappings) do
+        vim.keymap.set(map[1], map[2], map[3])
+    end
+    vim.g.neovide_scale_factor = 0.725
     vim.api.nvim_set_keymap("n", "<C-1>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
-    vim.g.guifont = "IosevkaTerm Nerd Font Mono"
+    vim.g.guifont = "IosevkaTerm Nerd Font Mono:h8"
+    vim.g.neovide_refresh_rate = 60
+    vim.g.neovide_cursor_animation_length = 0.06
+    vim.g.neovide_cursor_vfx_mode = "ripple"
+    -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
+
+    vim.o.shell = "bash"
+    vim.o.shellcmdflag = "-c"
+    -- system clipboard
+    vim.o.clipboard='unnamedplus'
 end
+
