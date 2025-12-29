@@ -2,7 +2,6 @@ local keymap = vim.keymap
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/kylechui/nvim-surround",                  version = "v3.1.3" },
     { src = "https://github.com/epwalsh/obsidian.nvim" },
@@ -61,10 +60,6 @@ require("oil").setup({
 
     view_options = {
         show_hidden = false,
-        -- is_hidden_file = function(name, _)
-        --   local m = name:match("^%.")
-        --   return m ~= nil
-        -- end,
         is_always_hidden = function(name, _)
             return name == ".." or name == ".git"
         end,
@@ -85,6 +80,9 @@ keymap.set("n", "\\", "<CMD>Oil --float<CR>", { desc = "Open parent directory" }
 
 -- # Telescope
 
+vim.pack.add({
+    { src = "https://github.com/nvim-telescope/telescope.nvim" },
+})
 require("telescope").setup({
     defaults = {
         layout_config = {
@@ -109,115 +107,79 @@ keymap.set('n', '<leader>ft', builtin.tags, { desc = 'Telescope Tags' })
 keymap.set('n', '<leader>fq', builtin.quickfix, { desc = 'Telescope Quickfix' })
 
 -- # Surround and autopair
-require("nvim-surround").setup({
-    event = { "BufReadPre", "BufNewFile", "VeryLazy" },
-    config = function()
-        require("nvim-surround").setup({
-            keymaps = {
-                insert = false,
-                insert_line = false,
-                normal = false,
-                normal_cur = false,
-                normal_line = false,
-                normal_cur_line = false,
-                visual = "<S-s>",
-                visual_line = false,
-                delete = false,
-                change = false,
-            },
-            aliases = {
-                ["a"] = false,
-                ["b"] = false,
-                ["B"] = false,
-                ["r"] = false,
-                ["q"] = false,
-                ["s"] = false,
-            },
-        })
-    end
+require("nvim-surround").setup({})
+
+local autopairs = require("nvim-autopairs")
+local Rule = require 'nvim-autopairs.rule'
+local cond = require 'nvim-autopairs.conds'
+-- configure autopairs
+autopairs.setup({
+    check_ts = true,                        -- enable treesitter
+    ts_config = {
+        lua = { "string" },                 -- don't add pairs in lua string treesitter nodes
+        javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
+        -- javascript = { "string", "template_string" },
+        java = false,                       -- don't check treesitter on java
+    },
+    disable_filetype = { "TelescopePrompt", "spectre_panel" },
+    disable_in_macro = true,
+    disable_in_replace_mode = true,
+    enable_moveright = true,
+    ignored_next_char = "",
+    enable_check_bracket_line = true, --- check bracket in same line
 })
 
-require("nvim-autopairs").setup({
-    event = { "InsertEnter" },
-    dependencies = { "hrsh7th/nvim-cmp", },
-    config = function()
-        -- import nvim-autopairs
-        local autopairs = require("nvim-autopairs")
 
-        -- configure autopairs
-        autopairs.setup({
-            check_ts = true,                        -- enable treesitter
-            ts_config = {
-                lua = { "string" },                 -- don't add pairs in lua string treesitter nodes
-                javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
-                -- javascript = { "string", "template_string" },
-                java = false,                       -- don't check treesitter on java
-            },
-            disable_filetype = { "TelescopePrompt", "spectre_panel" },
-            disable_in_macro = true,
-            disable_in_replace_mode = true,
-            enable_moveright = true,
-            ignored_next_char = "",
-            enable_check_bracket_line = true, --- check bracket in same line
-        })
-
-        local Rule = require 'nvim-autopairs.rule'
-
-        local cond = require 'nvim-autopairs.conds'
-
-        autopairs.add_rules({
-            Rule("`", "'", "tex"),
-            Rule("$", "$", "tex"),
-            Rule(' ', ' ')
-                :with_pair(function(opts)
-                    local pair = opts.line:sub(opts.col, opts.col + 1)
-                    return vim.tbl_contains({ '$$', '()', '{}', '[]', '<>' }, pair)
-                end)
-                :with_move(cond.none())
-                :with_cr(cond.none())
-                :with_del(function(opts)
-                    local col = vim.api.nvim_win_get_cursor(0)[2]
-                    local context = opts.line:sub(col - 1, col + 2)
-                    return vim.tbl_contains({ '$  $', '(  )', '{  }', '[  ]', '<  >' }, context)
-                end),
-            Rule("$ ", " ", "tex")
-                :with_pair(cond.not_after_regex(" "))
-                :with_del(cond.none()),
-            Rule("[ ", " ", "tex")
-                :with_pair(cond.not_after_regex(" "))
-                :with_del(cond.none()),
-            Rule("{ ", " ", "tex")
-                :with_pair(cond.not_after_regex(" "))
-                :with_del(cond.none()),
-            Rule("( ", " ", "tex")
-                :with_pair(cond.not_after_regex(" "))
-                :with_del(cond.none()),
-            Rule("< ", " ", "tex")
-                :with_pair(cond.not_after_regex(" "))
-                :with_del(cond.none()),
-        })
-
-        autopairs.get_rule('$'):with_move(function(opts)
-            return opts.char == opts.next_char:sub(1, 1)
+autopairs.add_rules({
+    Rule("`", "'", "tex"),
+    Rule("$", "$", "tex"),
+    Rule(' ', ' ')
+        :with_pair(function(opts)
+            local pair = opts.line:sub(opts.col, opts.col + 1)
+            return vim.tbl_contains({ '$$', '()', '{}', '[]', '<>' }, pair)
         end)
-
-        -- import nvim-cmp plugin (completions plugin)
-        local cmp = require("cmp")
-
-        -- import nvim-autopairs completion functionality
-        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
-        -- make autopairs and completion work together
-        cmp.event:on(
-            'confirm_done',
-            cmp_autopairs.on_confirm_done({
-                filetypes = {
-                    tex = false -- Disable for tex
-                }
-            })
-        )
-    end,
+        :with_move(cond.none())
+        :with_cr(cond.none())
+        :with_del(function(opts)
+            local col = vim.api.nvim_win_get_cursor(0)[2]
+            local context = opts.line:sub(col - 1, col + 2)
+            return vim.tbl_contains({ '$  $', '(  )', '{  }', '[  ]', '<  >' }, context)
+        end),
+    Rule("$ ", " ", "tex")
+        :with_pair(cond.not_after_regex(" "))
+        :with_del(cond.none()),
+    Rule("[ ", " ", "tex")
+        :with_pair(cond.not_after_regex(" "))
+        :with_del(cond.none()),
+    Rule("{ ", " ", "tex")
+        :with_pair(cond.not_after_regex(" "))
+        :with_del(cond.none()),
+    Rule("( ", " ", "tex")
+        :with_pair(cond.not_after_regex(" "))
+        :with_del(cond.none()),
+    Rule("< ", " ", "tex")
+        :with_pair(cond.not_after_regex(" "))
+        :with_del(cond.none()),
 })
+
+autopairs.get_rule('$'):with_move(
+  function(opts)
+    return opts.char == opts.next_char:sub(1, 1)
+  end
+)
+
+-- import nvim-cmp plugin (completions plugin)
+local cmp = require("cmp")
+-- import nvim-autopairs completion functionality
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+-- make autopairs and completion work together
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done({
+        filetypes = { tex = false }
+    })
+)
+
 --
 
 -- # CMP
@@ -436,7 +398,7 @@ require("obsidian").setup({
     sort_reversed = true,
     search_max_lines = 250,
     picker = {
-        name = 'telescope',
+        name = "telescope.nvim",
         note_mappings = {
             new = '<C-x>',
             insert_link = '<C-l>',
@@ -499,8 +461,8 @@ require("nvim-treesitter.configs").setup({
         "lua", "luadoc", "markdown",
         "markdown_inline", "python",
         "yaml", "latex", "bibtex",
-        "odin", "vimdoc", "typst",
-        "awk", "elixir", "c",
+        "odin", "vimdoc",
+        "awk", "c", "javascript", "html", "json"
     },
     incremental_selection = {
         enable = true,
@@ -553,7 +515,3 @@ require("lazygit")
 keymap.set("n", "<leader>gg", "<CMD>LazyGit<CR>", { desc = "LazyGit" })
 keymap.set("n", "<leader>ggc", "<CMD>LazyGitCurrentFile<CR>", { desc = "LazyGitCurrentFile" })
 keymap.set("n", "<leader>ggf", "<CMD>LazyGitFilter<CR>", { desc = "LazyGitFilter" })
-
--- # fff.nvim
--- require("fff").setup({
--- })
