@@ -31,12 +31,13 @@ op.foldenable        = true
 vim.schedule(function() opt.clipboard = 'unnamedplus' end)
 
 opt.background = "dark"
-opt.breakindent = true
+opt.breakindent = false -- true
 opt.autoindent = true
 opt.wrap = true
-opt.linebreak = true
-opt.formatoptions = "tcqjw"
-opt.tw = 100
+opt.linebreak = false -- true
+-- opt.formatoptions = "tcqjw"
+opt.formatoptions = "tcqj"
+-- opt.tw = 100
 opt.expandtab = true
 opt.undofile = true
 opt.ignorecase = true

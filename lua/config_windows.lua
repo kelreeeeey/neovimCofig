@@ -80,9 +80,7 @@ keymap.set("n", "\\", "<CMD>Oil --float<CR>", { desc = "Open parent directory" }
 
 -- # Telescope
 
-vim.pack.add({
-    { src = "https://github.com/nvim-telescope/telescope.nvim" },
-})
+vim.pack.add({ { src = "https://github.com/nvim-telescope/telescope.nvim" }, })
 require("telescope").setup({
     defaults = {
         layout_config = {

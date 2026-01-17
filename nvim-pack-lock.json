@@ -1,14 +1,26 @@
 {
   "plugins": {
     "ayu-nvim": [],
+    "conform.nvim": {
+      "rev": "238f542",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "indent-blankline.nvim": {
       "rev": "005b560",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
     },
     "lazygit.nvim": [],
     "mason.nvim": [],
+    "neovim-ayu": {
+      "rev": "38caa8b",
+      "src": "https://github.com/Shatur/neovim-ayu"
+    },
     "nvim-autopairs": [],
     "nvim-cmp": [],
+    "nvim-colorizer.lua": {
+      "rev": "a065833",
+      "src": "https://github.com/norcalli/nvim-colorizer.lua"
+    },
     "nvim-surround": {
       "version": "'v3.1.3'"
     },
@@ -23,6 +35,18 @@
     "plenary.nvim": [],
     "smartcolumn.nvim": [],
     "telescope.nvim": [],
+    "tokyodark.nvim": {
+      "rev": "659aff3",
+      "src": "https://github.com/tiagovla/tokyodark.nvim"
+    },
+    "tokyonight.nvim": {
+      "rev": "5da1b76",
+      "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "treesj": {
+      "rev": "186084d",
+      "src": "https://github.com/Wansmer/treesj"
+    },
     "which-key.nvim": {
       "rev": "b4177e3",
       "src": "https://github.com/folke/which-key.nvim"

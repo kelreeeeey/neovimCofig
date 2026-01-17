@@ -7,9 +7,11 @@ keymap.set("n", "<leader><leader>x", "<CMD>luafile %<CR>", { desc = "execute thi
 vim.pack.add({
     { src = "https://github.com/Shatur/neovim-ayu" },
     { src = "https://github.com/norcalli/nvim-colorizer.lua" },
+    { src = "https://github.com/folke/tokyonight.nvim" },
     { src = 'https://github.com/nyngwang/nvimgelion', },
     { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
     { src = "https://github.com/folke/which-key.nvim" },
+    { src = "https://github.com/stevearc/conform.nvim" },
 })
 
 -- vim.cmd.colorscheme "zaibatsu"
@@ -31,13 +33,37 @@ require('ayu').setup({
     },
 })
 
-vim.cmd("colorscheme ayu-dark")
+require("conform").setup({
+    notify_on_error = false,
+    -- Odinfmt gets its configuration from odinfmt.json. It defaults
+    -- writing to stdout but needs to be told to read from stdin.
+    formatters = {
+        odinfmt = {
+            -- Change where to find the command if it isn't in your path.
+            command = "odinfmt",
+            args = { "-stdin" },
+            stdin = true,
+        },
+    },
+    -- and instruct conform to use odinfmt.
+    formatters_by_ft = {
+        odin = { "odinfmt" },
+    },
+})
+
+
+
+-- vim.cmd("colorscheme ayu-dark")
+vim.cmd("colorscheme tokyonight-night")
 vim.g.guifont = "IosevkaTerm Nerd Font"
 vim.g.ayu_avoid_italics = true
 vim.g.termguicolor = false
 --
 
-require('colorizer').setup({ '*' })
+require('colorizer').setup({
+    '*',
+    odin = { rgb_fn = true, mode = "background" };
+})
 
 local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
@@ -77,7 +103,10 @@ else
     -- Amazing minimal 0 deps plugin for snippets by: Erik
     -- https://blog.erikwastaken.dev/posts/2024-06-14-pluginless-neovim-snippets-in-42-lines-of-lua.html
 end
+
 --
+local tag_picker = require('tag_picker') -- comes after telescope
+vim.keymap.set('n', '<leader>t', tag_picker.tag_search_picker, { desc = "Search tags" })
 vim.keymap.set('n', '<leader>is', require("reys.plugins.skeleton").show, {})
 
 local foldmethod_guards = function(fold_method)
@@ -270,3 +299,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     callback = LineNumberColors,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+        require("conform").format({ bufnr = args.buf })
+    end,
+})
