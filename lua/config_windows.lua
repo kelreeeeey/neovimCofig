@@ -347,10 +347,10 @@ local function workspace_path()
         return {
             {
                 name = 'Kelreys on Lediapad',
-                path = "~/obsidian_vaults",
+                path = "~/iPhone_obsidian_vault/iPhone Vault/",
                 overrides = {
                     templates = {
-                        folder = "~/obsidian_vaults/bins/templates",
+                        folder = "~/iPhone_obsidian_vault/iPhone Vault/bins/templates",
                         date_format = '%Y-%b-%d',
                         time_format = '%H:%M:%m',
                     },
@@ -373,11 +373,14 @@ local function workspace_path()
     end
 end
 
+local obs_workspace = workspace_path()
+-- vim.print(obs_workspace)
+
 require("obsidian").setup({
     lazy = true,
     ft = 'markdown',
     dependencies = { 'nvim-lua/plenary.nvim', },
-    workspaces = workspace_path(),
+    workspaces = obs_workspace,
 
     daily_notes = {
         folder = 'log/daily',

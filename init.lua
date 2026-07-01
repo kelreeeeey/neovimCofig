@@ -1,17 +1,36 @@
 require("reys.core")
+require("vim._core.ui2").enable({})
 
 local keymap = vim.keymap
 keymap.set("n", "<leader><leader>x", "<CMD>luafile %<CR>", { desc = "execute this lua file" })
 
 --
 vim.pack.add({
+    -- colorschemes
     { src = "https://github.com/Shatur/neovim-ayu" },
     { src = "https://github.com/norcalli/nvim-colorizer.lua" },
     { src = "https://github.com/folke/tokyonight.nvim" },
     { src = 'https://github.com/nyngwang/nvimgelion', },
+
     { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/stevearc/conform.nvim" },
+
+    -- folding
+    { src = "https://github.com/kevinhwang91/nvim-ufo" },
+    { src = "https://github.com/kevinhwang91/promise-async" }
+
+})
+
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+require('ufo').setup({
+    provider_selector = function(bufnr, filetype, buftype)
+        return {'treesitter', 'indent'}
+    end
 })
 
 -- vim.cmd.colorscheme "zaibatsu"
@@ -103,11 +122,12 @@ else
     -- Amazing minimal 0 deps plugin for snippets by: Erik
     -- https://blog.erikwastaken.dev/posts/2024-06-14-pluginless-neovim-snippets-in-42-lines-of-lua.html
 end
+vim.keymap.set('n', '<leader>is', require("reys.plugins.skeleton").show, {})
 
 --
 local tag_picker = require('tag_picker') -- comes after telescope
 vim.keymap.set('n', '<leader>t', tag_picker.tag_search_picker, { desc = "Search tags" })
-vim.keymap.set('n', '<leader>is', require("reys.plugins.skeleton").show, {})
+--
 
 local foldmethod_guards = function(fold_method)
     vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -210,7 +230,7 @@ local filetype_config = {
         shiftwidth = 4,
         expandtab = false,
         smartindent = true,
-        foldmethod = "syntax",
+        foldmethod = "expr",
         theme = "zaibatsu",
     },
     sh = {

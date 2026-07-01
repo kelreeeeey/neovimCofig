@@ -77,33 +77,24 @@ map.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 map.set('n', "<leader>v", "<CMD>:vsp<CR>")
 map.set('n', "<leader>s", "<CMD>:sp<CR>")
+map.set('n', "<leader>dt", "<CMD>:put=strftime('%a %Y-%m-%d %H:%M:%S%z')<CR>")
+
 -- moving around windows
 map.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 map.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- vim.g.python3_host_prog = vim.fn.expand("~/AppData/Local/Programs/Python/Python310/python.exe", false)
--- vim.cmd.syntax='off'
--- opt.shell = 'bash.exe'
-
--- map.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
--- map.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
-
-map.set('n', "<leader>dt", "<CMD>:put=strftime('%a %Y-%m-%d %H:%M:%S%z')<CR>")
-
--- insert mode deletion
-
 -- NOTE: window resizing
 map.set("n", "<A-h>", "5<C-w><")
 map.set("n", "<A-l>", "5<C-w>>")
 map.set("n", "<A-j>", "5<C-w>-")
 map.set("n", "<A-k>", "5<C-w>+")
-
 map.set("n", "<S-A-h>", "50<C-w><")
 map.set("n", "<S-A-l>", "50<C-w>>")
 map.set("n", "<S-A-j>", "50<C-w>-")
 map.set("n", "<S-A-k>", "50<C-w>+")
+
 vim.diagnostic.config({
     virtual_lines=true,
     underline=true,
@@ -141,3 +132,9 @@ if vim.g.neovide == true then
     vim.o.clipboard='unnamedplus'
 end
 
+-- vim.g.python3_host_prog = vim.fn.expand("~/AppData/Local/Programs/Python/Python310/python.exe", false)
+-- vim.cmd.syntax='off'
+-- opt.shell = 'bash.exe'
+
+-- map.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
+-- map.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
