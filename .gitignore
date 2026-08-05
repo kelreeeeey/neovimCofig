@@ -3,3 +3,5 @@ lazygi*
 UltiSnips/
 *.log
 nvim-pack-lock.json
+./nvim-pack-lock.json
+
