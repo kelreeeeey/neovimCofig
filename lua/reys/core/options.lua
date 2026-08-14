@@ -24,8 +24,8 @@ opt.foldmethod       = "expr"
 opt.winborder        = "rounded"
 
 op.foldcolumn        = "auto" -- '0' is not bad
-op.foldlevel         = 49     -- Using ufo provider need a large value, feel free to decrease the value
-op.foldlevelstart    = 1      -- 99
+op.foldlevel         = 99     -- Using ufo provider need a large value, feel free to decrease the value
+op.foldlevelstart    = 99
 op.foldenable        = true
 
 vim.schedule(function() opt.clipboard = 'unnamedplus' end)
@@ -101,8 +101,25 @@ vim.diagnostic.config({
     virtual_text=false,
 })
 
-vim.o.shell = "bash"
-vim.o.shellcmdflag = "-c"
+
+-- local shell = 'bash'
+
+
+local set_shell_bash = function()
+    vim.o.shell = [["C:/Program Files/Git/usr/bin/bash.exe"]]
+    vim.o.shellcmdflag = "-c"
+    vim.o.shellredir = ">%s 2>&1"
+    vim.o.shellquote = ""
+    vim.o.shellxescape = ""
+    vim.o.shellslash = true
+    vim.env.TMP = "/tmp"
+    vim.o.shellxquote = ""
+    -- vim.o.shellxquote = "\\"
+    vim.o.shellpipe = "2>&1| tee"
+end
+
+set_shell_bash()
+
 local mappings = {
     { 'n', '<c-c>', '"+y' },
     { 'v', '<c-c>', '"+y' },
@@ -125,16 +142,17 @@ if vim.g.neovide == true then
     vim.g.neovide_cursor_animation_length = 0.06
     vim.g.neovide_cursor_vfx_mode = "ripple"
     -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
-
-    vim.o.shell = "bash"
-    vim.o.shellcmdflag = "-c"
+    set_shell_bash()
     -- system clipboard
     vim.o.clipboard='unnamedplus'
 end
 
 -- vim.g.python3_host_prog = vim.fn.expand("~/AppData/Local/Programs/Python/Python310/python.exe", false)
 -- vim.cmd.syntax='off'
--- opt.shell = 'bash.exe'
+-- opt.shell = shell
 
 -- map.set('n', '[c', require('treesitter-context').go_to_context, { silent = true })
 -- map.set('n', "<leader>M", "<CMD>MarkdownPreviewToggle<CR>")
+--
+
+map.set("n", "<leader><leader>x", "<CMD>luafile %<CR>", { desc = "execute this lua file" })
